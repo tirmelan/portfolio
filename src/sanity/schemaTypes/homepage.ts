@@ -6,27 +6,54 @@ export const homepageType = defineType({
   type: "document",
   fields: [
     defineField({
-      name: "name",
-      title: "Navn",
+      name: "title",
+      title: "Tittel",
       type: "string",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "role",
-      title: "Tittel / Rolle",
-      type: "string",
-    }),
-    defineField({
-      name: "bio",
-      title: "Bio",
+      name: "ingress",
+      title: "Ingress",
       type: "array",
       of: [{ type: "block" }],
     }),
     defineField({
-      name: "profileImage",
-      title: "Profilbilde",
-      type: "image",
-      options: { hotspot: true },
+      name: "ctaButtons",
+      title: "CTA-knapper",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({
+              name: "label",
+              title: "Tekst",
+              type: "string",
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: "href",
+              title: "Lenke",
+              type: "string",
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: "color",
+              title: "Farge",
+              type: "string",
+              options: {
+                list: [
+                  { title: "Gul", value: "gul" },
+                  { title: "Rosa", value: "rosa" },
+                ],
+              },
+            }),
+          ],
+          preview: {
+            select: { title: "label", subtitle: "href" },
+          },
+        },
+      ],
     }),
   ],
 });

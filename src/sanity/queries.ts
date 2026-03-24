@@ -2,10 +2,13 @@ import { groq } from "next-sanity";
 
 export const homepageQuery = groq`
   *[_type == "homepage"][0] {
-    name,
-    role,
-    bio,
-    profileImage
+    title,
+    ingress,
+    ctaButtons[] {
+      label,
+      href,
+      color
+    }
   }
 `;
 
