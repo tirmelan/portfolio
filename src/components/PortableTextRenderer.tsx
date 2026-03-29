@@ -2,7 +2,7 @@ import { PortableText, PortableTextComponents } from "next-sanity";
 
 const components: PortableTextComponents = {
   block: {
-    normal: ({ children }) => <p className="mb-4 leading-relaxed">{children}</p>,
+    normal: ({ children }) => <p className="mb-4 last:mb-0">{children}</p>,
     h2: ({ children }) => <h2 className="text-2xl font-bold mt-8 mb-4">{children}</h2>,
     h3: ({ children }) => <h3 className="text-xl font-semibold mt-6 mb-3">{children}</h3>,
   },

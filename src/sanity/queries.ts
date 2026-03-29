@@ -26,6 +26,39 @@ export const projectsQuery = groq`
   }
 `;
 
+export const projectQuery = groq`
+  *[_type == "project" && slug.current == $slug][0] {
+    _id,
+    title,
+    slug,
+    description,
+    image,
+    tags,
+    url,
+    github,
+    publishedAt,
+    sections[] {
+      _key,
+      _type,
+      title,
+      body,
+      layout,
+      position,
+      image,
+      alt,
+      images[] { image, alt },
+      imageLeft,
+      altLeft,
+      imageRight,
+      altRight
+    }
+  }
+`;
+
+export const projectSlugsQuery = groq`
+  *[_type == "project" && defined(slug.current)].slug.current
+`;
+
 export const aboutQuery = groq`
   *[_type == "about"][0] {
     title,

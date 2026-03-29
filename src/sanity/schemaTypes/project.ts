@@ -52,6 +52,12 @@ export const projectType = defineType({
       title: "Publisert",
       type: "datetime",
     }),
+    defineField({
+      name: "sections",
+      title: "Innhold",
+      type: "array",
+      of: [{ type: "textBlock" }, { type: "textBlockLiten" }, { type: "imageBlock" }],
+    }),
   ],
   orderings: [
     {

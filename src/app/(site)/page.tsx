@@ -25,13 +25,13 @@ export default async function HomePage() {
   }
 
   return (
-    <section className="bg-lys-blå flex flex-col items-center justify-center px-6 py-[101px] min-h-[762px]">
-      <div className="flex flex-col items-center gap-[41px] max-w-[1095px]">
-        <h1 className="text-blå text-[clamp(3rem,7vw,6.4rem)] font-semibold leading-[1.25] text-center">
+    <section className="bg-lys-bla flex flex-col items-center justify-center px-6 py-[101px] min-h-[762px]">
+      <div className="flex flex-col items-center gap-[41px] w-full max-w-[1095px]">
+        <h1 className="text-bla text-[clamp(3rem,7vw,6.4rem)] font-semibold leading-[1.25] text-center">
           {data.title}
         </h1>
         {data.ingress && (
-          <div className="text-blå text-[30px] leading-normal text-center max-w-[839px]">
+          <div className="text-bla text-[30px] leading-[normal] text-center max-w-[839px]">
             <PortableTextRenderer value={data.ingress} />
           </div>
         )}
@@ -43,7 +43,7 @@ export default async function HomePage() {
               <Link
                 key={i}
                 href={btn.href}
-                className={`${buttonColors[btn.color ?? "gul"] ?? "bg-gul"} text-blå text-[24px] px-[20px] py-[10px] rounded-full hover:opacity-80 transition-opacity inline-flex items-center gap-[9px]`}
+                className={`${buttonColors[btn.color ?? "gul"] ?? "bg-gul"} text-bla text-[24px] px-[20px] py-[10px] rounded-full hover:opacity-80 transition-opacity inline-flex items-center gap-[9px]`}
               >
                 {btn.label}
                 <span aria-hidden="true">&rarr;</span>
