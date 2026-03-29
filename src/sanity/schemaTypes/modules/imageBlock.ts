@@ -16,6 +16,7 @@ export const imageBlockType = defineType({
           { title: "Tre kvadratiske bilder", value: "treKvadratiske" },
           { title: "Kvadrat og rektangel", value: "kvadratRektangel" },
           { title: "To rektangulære bilder", value: "toRektangulare" },
+          { title: "Stor og liten (tre bilder grid)", value: "storOgLiten" },
         ],
         layout: "radio",
       },
@@ -24,7 +25,7 @@ export const imageBlockType = defineType({
     }),
     defineField({
       name: "position",
-      title: "Kvadrat-posisjon",
+      title: "Stort bilde-posisjon",
       type: "string",
       options: {
         list: [
@@ -34,7 +35,8 @@ export const imageBlockType = defineType({
         layout: "radio",
       },
       initialValue: "venstre",
-      hidden: ({ parent }) => parent?.layout !== "kvadratRektangel",
+      hidden: ({ parent }) =>
+        parent?.layout !== "kvadratRektangel" && parent?.layout !== "storOgLiten",
     }),
     defineField({
       name: "image",
@@ -97,6 +99,7 @@ export const imageBlockType = defineType({
         treKvadratiske: "Tre kvadratiske bilder",
         kvadratRektangel: "Kvadrat og rektangel",
         toRektangulare: "To rektangulære bilder",
+        storOgLiten: "Stor og liten (tre bilder grid)",
       };
       return {
         title: titles[layout] || "Bildemodul",

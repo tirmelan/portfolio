@@ -166,5 +166,60 @@ export default function ImageBlock({
     );
   }
 
+  if (layout === "storOgLiten") {
+    const big = imageList[0];
+    const small1 = imageList[1];
+    const small2 = imageList[2];
+    if (!big && !small1 && !small2) return null;
+
+    const bigEl = big && (
+      <div className="relative w-full md:w-1/2 aspect-[790/1035]">
+        <Image
+          src={urlFor(big.image).width(790).height(1035).url()}
+          alt={big.alt || ""}
+          fill
+          className="object-cover"
+        />
+      </div>
+    );
+
+    const smallEls = (
+      <div className="flex flex-col gap-[30px] w-full md:w-1/2">
+        {small1 && (
+          <div className="relative w-full aspect-[790/502]">
+            <Image
+              src={urlFor(small1.image).width(790).height(502).url()}
+              alt={small1.alt || ""}
+              fill
+              className="object-cover"
+            />
+          </div>
+        )}
+        {small2 && (
+          <div className="relative w-full aspect-[790/502]">
+            <Image
+              src={urlFor(small2.image).width(790).height(502).url()}
+              alt={small2.alt || ""}
+              fill
+              className="object-cover"
+            />
+          </div>
+        )}
+      </div>
+    );
+
+    return (
+      <section className="px-6 md:px-[59px]">
+        <div className="flex flex-col md:flex-row gap-[30px]">
+          {position === "venstre" ? (
+            <>{bigEl}{smallEls}</>
+          ) : (
+            <>{smallEls}{bigEl}</>
+          )}
+        </div>
+      </section>
+    );
+  }
+
   return null;
 }
