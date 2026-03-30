@@ -15,7 +15,9 @@ export const homepageQuery = groq`
       title,
       slug,
       tags[]-> { _id, name, color },
-      headerImage
+      headerImage,
+      previewImageLeft,
+      previewImageRight
     }
   }
 `;
@@ -49,6 +51,7 @@ export const projectQuery = groq`
     sections[] {
       _key,
       _type,
+      storTittel,
       title,
       body,
       layout,
@@ -68,13 +71,32 @@ export const projectSlugsQuery = groq`
   *[_type == "project" && defined(slug.current)].slug.current
 `;
 
+export const contactQuery = groq`
+  *[_type == "contact"][0] {
+    label,
+    title,
+    ingress,
+    email,
+    phone,
+    linkedin,
+    instagram
+  }
+`;
+
 export const aboutQuery = groq`
   *[_type == "about"][0] {
+    label,
     title,
-    content,
-    skills,
+    headerImage,
+    sectionTitle,
+    ingress,
+    brodtekst,
     email,
-    github,
-    linkedin
+    phone,
+    ctaButtons[] {
+      label,
+      href,
+      color
+    }
   }
 `;

@@ -16,14 +16,14 @@ export default function Footer() {
               <p className="font-serif text-bla text-[17px] leading-[25px] mb-[1px]">
                 Hopp til...
               </p>
-              <Link href="/prosjekter" className="text-bla text-[14px] leading-[26px] hover:opacity-70 transition-opacity inline-flex items-center gap-[4px]">
-                Prosjekter <span className="text-[12px]">&rarr;</span>
+              <Link href="/#top" className="text-bla text-[14px] leading-[26px] hover:opacity-70 transition-opacity inline-flex items-center gap-[4px]">
+                Prosjekter <svg aria-hidden="true" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 4H11M8 1L11 4L8 7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </Link>
               <Link href="/om-meg" className="text-bla text-[14px] leading-[26px] hover:opacity-70 transition-opacity inline-flex items-center gap-[4px]">
-                Om meg <span className="text-[12px]">&rarr;</span>
+                Om meg <svg aria-hidden="true" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 4H11M8 1L11 4L8 7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </Link>
-              <Link href="/cv" className="text-bla text-[14px] leading-[26px] hover:opacity-70 transition-opacity inline-flex items-center gap-[4px]">
-                CV <span className="text-[12px]">&rarr;</span>
+              <Link href="/kontakt" className="text-bla text-[14px] leading-[26px] hover:opacity-70 transition-opacity inline-flex items-center gap-[4px]">
+                Kontakt <svg aria-hidden="true" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 4H11M8 1L11 4L8 7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </Link>
             </div>
 
@@ -58,7 +58,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="text-bla text-[14px] leading-[26px] hover:opacity-70 transition-opacity inline-flex items-center gap-[4px]"
               >
-                LinkedIn-profil <span className="text-[12px]">&#8599;</span>
+                LinkedIn-profil <svg aria-hidden="true" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </a>
               <a
                 href="https://www.instagram.com/meland.design/"
@@ -66,7 +66,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="text-bla text-[14px] leading-[26px] hover:opacity-70 transition-opacity inline-flex items-center gap-[4px]"
               >
-                Instagram <span className="text-[12px]">&#8599;</span>
+                Instagram <svg aria-hidden="true" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </a>
             </div>
           </div>

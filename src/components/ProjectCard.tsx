@@ -32,6 +32,10 @@ interface ProjectCardProps {
   tags?: Tag[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   headerImage?: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  previewImageLeft?: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  previewImageRight?: any;
 }
 
 export default function ProjectCard({
@@ -40,7 +44,12 @@ export default function ProjectCard({
   slug,
   tags,
   headerImage,
+  previewImageLeft,
+  previewImageRight,
 }: ProjectCardProps) {
+  const imageLeft = previewImageLeft ?? headerImage;
+  const imageRight = previewImageRight ?? headerImage;
+
   return (
     <Link href={`/prosjekter/${slug.current}`} className="block group">
       {/* Top separator */}
@@ -60,7 +69,7 @@ export default function ProjectCard({
               return (
                 <span
                   key={tag._id}
-                  className={`${bg} ${text} font-sans text-[18px] leading-normal px-[15px] py-[9px] rounded-full whitespace-nowrap`}
+                  className={`${bg} ${text} font-sans text-[20px] leading-normal px-[15px] py-[3px] rounded-full whitespace-nowrap`}
                 >
                   {tag.name}
                 </span>
@@ -70,27 +79,31 @@ export default function ProjectCard({
         )}
       </div>
 
-      {/* Bottom separator */}
+      {/* Separator between title row and images */}
       <hr className="border-t border-bla" />
 
-      {/* Two square images — full width, edge to edge */}
-      {headerImage && (
+      {/* Two preview images — full width, edge to edge */}
+      {(imageLeft || imageRight) && (
         <div className="flex">
           <div className="relative flex-1 aspect-square overflow-hidden">
-            <Image
-              src={urlFor(headerImage).width(800).height(800).url()}
-              alt=""
-              fill
-              className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
-            />
+            {imageLeft && (
+              <Image
+                src={urlFor(imageLeft).width(800).height(800).url()}
+                alt=""
+                fill
+                className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+              />
+            )}
           </div>
           <div className="relative flex-1 aspect-square overflow-hidden">
-            <Image
-              src={urlFor(headerImage).width(800).height(800).url()}
-              alt=""
-              fill
-              className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
-            />
+            {imageRight && (
+              <Image
+                src={urlFor(imageRight).width(800).height(800).url()}
+                alt=""
+                fill
+                className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+              />
+            )}
           </div>
         </div>
       )}

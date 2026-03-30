@@ -42,7 +42,7 @@ export default function ProjectHeader({
   return (
     <header>
       {/* Text + tags */}
-      <div className="px-6 md:px-[57px] pt-[31px] pb-[40px] flex flex-col gap-6">
+      <div className="px-6 md:px-[57px] pt-[60px] pb-[40px] flex flex-col gap-6">
         {/* Title line */}
         <h1 className="font-sans font-medium text-[40px] md:text-[64px] leading-[1.07] text-bla">
           {clientName}:{" "}

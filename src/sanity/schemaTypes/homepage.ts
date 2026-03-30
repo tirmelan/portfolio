@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { portableTextBlock } from "./portableTextBlock";
 
 export const homepageType = defineType({
   name: "homepage",
@@ -15,7 +16,7 @@ export const homepageType = defineType({
       name: "ingress",
       title: "Ingress",
       type: "array",
-      of: [{ type: "block" }],
+      of: [portableTextBlock],
     }),
     defineField({
       name: "ctaButtons",
@@ -32,10 +33,38 @@ export const homepageType = defineType({
               validation: (Rule) => Rule.required(),
             }),
             defineField({
-              name: "href",
-              title: "Lenke",
+              name: "linkType",
+              title: "Lenketype",
               type: "string",
-              validation: (Rule) => Rule.required(),
+              options: {
+                list: [
+                  { title: "Intern side", value: "intern" },
+                  { title: "Ekstern URL", value: "ekstern" },
+                ],
+                layout: "radio",
+                direction: "horizontal",
+              },
+              initialValue: "intern",
+            }),
+            defineField({
+              name: "internalPage",
+              title: "Intern side",
+              type: "string",
+              options: {
+                list: [
+                  { title: "Forside", value: "/" },
+                  { title: "Prosjekter", value: "/prosjekter" },
+                  { title: "Om meg", value: "/om-meg" },
+                  { title: "CV", value: "/cv" },
+                ],
+              },
+              hidden: ({ parent }) => parent?.linkType === "ekstern",
+            }),
+            defineField({
+              name: "externalUrl",
+              title: "Ekstern URL",
+              type: "url",
+              hidden: ({ parent }) => parent?.linkType !== "ekstern",
             }),
             defineField({
               name: "color",
@@ -43,14 +72,18 @@ export const homepageType = defineType({
               type: "string",
               options: {
                 list: [
-                  { title: "Gul", value: "gul" },
+                  { title: "Gul / oliven", value: "gul" },
                   { title: "Rosa", value: "rosa" },
+                  { title: "Mellomblå", value: "mellombla" },
+                  { title: "Burgunder (mørk)", value: "burgunder" },
+                  { title: "Mørk blå (mørk)", value: "bla" },
+                  { title: "Lys blå", value: "lys-bla" },
                 ],
               },
             }),
           ],
           preview: {
-            select: { title: "label", subtitle: "href" },
+            select: { title: "label", subtitle: "internalPage" },
           },
         },
       ],

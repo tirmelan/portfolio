@@ -39,6 +39,20 @@ export const projectType = defineType({
       type: "image",
       options: { hotspot: true },
     }),
+    defineField({
+      name: "previewImageLeft",
+      title: "Forhåndsvisning — venstre bilde",
+      description: "Venstre bilde i prosjektkortet på forsiden",
+      type: "image",
+      options: { hotspot: true },
+    }),
+    defineField({
+      name: "previewImageRight",
+      title: "Forhåndsvisning — høyre bilde",
+      description: "Høyre bilde i prosjektkortet på forsiden",
+      type: "image",
+      options: { hotspot: true },
+    }),
 
     // --- Intro-seksjon ---
     defineField({
@@ -91,7 +105,7 @@ export const projectType = defineType({
       name: "sections",
       title: "Innhold",
       type: "array",
-      of: [{ type: "textBlock" }, { type: "textBlockLiten" }, { type: "imageBlock" }],
+      of: [{ type: "textBlock" }, { type: "imageBlock" }],
     }),
   ],
   orderings: [

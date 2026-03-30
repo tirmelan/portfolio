@@ -23,7 +23,7 @@ function SectionRenderer({ sections }: { sections: any[] }) {
         switch (section._type) {
           case "textBlock":
             return (
-              <TextBlock key={section._key} title={section.title} body={section.body} size="stor" />
+              <TextBlock key={section._key} title={section.title} body={section.body} size={section.storTittel === false ? "liten" : "stor"} />
             );
           case "textBlockLiten":
             return (

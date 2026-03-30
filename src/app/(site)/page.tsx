@@ -3,12 +3,17 @@ import { homepageQuery } from "@/sanity/queries";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 import Link from "next/link";
 import ProjectCard from "@/components/ProjectCard";
+import ScrollReveal from "@/components/animations/ScrollReveal";
 
 export const revalidate = 60;
 
-const buttonColors: Record<string, string> = {
-  gul: "bg-gul",
-  rosa: "bg-rosa",
+const buttonColors: Record<string, [string, string]> = {
+  gul: ["bg-gul", "text-bla"],
+  rosa: ["bg-rosa", "text-bla"],
+  mellombla: ["bg-mellombla", "text-bla"],
+  burgunder: ["bg-burgunder", "text-lys-bla"],
+  bla: ["bg-bla", "text-lys-bla"],
+  "lys-bla": ["bg-lys-bla", "text-bla"],
 };
 
 export default async function HomePage() {
@@ -27,7 +32,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <section className="bg-lys-bla flex flex-col items-center justify-center px-6 py-[101px] min-h-[762px]">
+      <section id="top" className="bg-lys-bla flex flex-col items-center justify-center px-6 py-[101px] min-h-[762px]">
         <div className="flex flex-col items-center gap-[41px] w-full max-w-[1095px]">
           <h1 className="text-bla text-[clamp(3rem,7vw,6.4rem)] font-semibold leading-[1.25] text-center">
             {data.title}
@@ -45,7 +50,7 @@ export default async function HomePage() {
                 <Link
                   key={i}
                   href={btn.href}
-                  className={`${buttonColors[btn.color ?? "gul"] ?? "bg-gul"} text-bla text-[24px] px-[20px] py-[10px] rounded-full hover:opacity-80 transition-opacity inline-flex items-center gap-[9px]`}
+                  className={`${(buttonColors[btn.color ?? "gul"] ?? buttonColors.gul).join(" ")} text-[24px] px-[20px] py-[10px] rounded-full hover:bg-bla hover:text-lys-bla transition-colors inline-flex items-center gap-[9px]`}
                 >
                   {btn.label}
                   <svg aria-hidden="true" width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +66,7 @@ export default async function HomePage() {
       {/* Featured projects */}
       {data.featuredProjects && data.featuredProjects.length > 0 && (
         <section className="flex flex-col px-[62px]">
-          {data.featuredProjects.map(
+          {data.featuredProjects.filter((p: { _id: string }, i: number, arr: { _id: string }[]) => arr.findIndex(x => x._id === p._id) === i).map(
             (project: {
               _id: string;
               clientName: string;
@@ -70,15 +75,22 @@ export default async function HomePage() {
               tags?: { _id: string; name: string; color: string }[];
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               headerImage?: any;
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              previewImageLeft?: any;
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              previewImageRight?: any;
             }) => (
-              <ProjectCard
-                key={project._id}
-                clientName={project.clientName}
-                title={project.title}
-                slug={project.slug}
-                tags={project.tags}
-                headerImage={project.headerImage}
-              />
+              <ScrollReveal key={project._id}>
+                <ProjectCard
+                  clientName={project.clientName}
+                  title={project.title}
+                  slug={project.slug}
+                  tags={project.tags}
+                  headerImage={project.headerImage}
+                  previewImageLeft={project.previewImageLeft}
+                  previewImageRight={project.previewImageRight}
+                />
+              </ScrollReveal>
             )
           )}
         </section>

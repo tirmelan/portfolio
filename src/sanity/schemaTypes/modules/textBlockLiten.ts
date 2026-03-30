@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { portableTextBlock } from "../portableTextBlock";
 
 export const textBlockLitenType = defineType({
   name: "textBlockLiten",
@@ -14,7 +15,7 @@ export const textBlockLitenType = defineType({
       name: "body",
       title: "Brødtekst",
       type: "array",
-      of: [{ type: "block" }],
+      of: [portableTextBlock],
     }),
   ],
   preview: {
