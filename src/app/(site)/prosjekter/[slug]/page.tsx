@@ -3,6 +3,8 @@ import { projectQuery, projectSlugsQuery } from "@/sanity/queries";
 import { notFound } from "next/navigation";
 import TextBlock from "@/components/modules/TextBlock";
 import ImageBlock from "@/components/modules/ImageBlock";
+import ProjectHeader from "@/components/ProjectHeader";
+import ProjectIntro from "@/components/ProjectIntro";
 
 export const revalidate = 60;
 
@@ -64,6 +66,21 @@ export default async function ProsjektPage({
 
   return (
     <article>
+      <ProjectHeader
+        clientName={project.clientName}
+        title={project.title}
+        tags={project.tags}
+        headerImage={project.headerImage}
+      />
+      <ProjectIntro
+        ingress={project.ingress}
+        kundeLabel={project.kundeLabel}
+        kunde={project.kunde}
+        samarbeid={project.samarbeid}
+        leveranse={project.leveranse}
+        periode={project.periode}
+        lenke={project.lenke}
+      />
       <SectionRenderer sections={project.sections} />
     </article>
   );

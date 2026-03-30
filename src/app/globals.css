@@ -8,6 +8,7 @@
   --mellombla: #7d9fd7;
   --gul: #aba461;
   --rosa: #f4d1c0;
+  --burgunder: #400116;
 }
 
 @theme inline {
@@ -18,6 +19,7 @@
   --color-mellombla: var(--mellombla);
   --color-gul: var(--gul);
   --color-rosa: var(--rosa);
+  --color-burgunder: var(--burgunder);
   --font-sans: "indivisible", sans-serif;
   --font-serif: "plantin", serif;
 }

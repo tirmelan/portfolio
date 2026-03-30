@@ -1,28 +1,23 @@
 import { client } from "@/sanity/client";
 import { projectsQuery } from "@/sanity/queries";
-import imageUrlBuilder from "@sanity/image-url";
-import Image from "next/image";
 import Link from "next/link";
-
-const builder = imageUrlBuilder(client);
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function urlFor(source: any) {
-  return builder.image(source);
-}
 
 export const revalidate = 60;
 
+interface Tag {
+  _id: string;
+  name: string;
+  color: string;
+}
+
 interface Project {
   _id: string;
+  clientName?: string;
   title: string;
   slug: { current: string };
-  description?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  image?: any;
-  tags?: string[];
-  url?: string;
-  github?: string;
+  headerImage?: any;
+  tags?: Tag[];
 }
 
 export default async function ProsjekterPage() {
@@ -48,56 +43,22 @@ export default async function ProsjekterPage() {
               key={project._id}
               className="border border-gray-200 rounded-xl overflow-hidden hover:shadow-md transition-shadow group"
             >
-              {project.image && (
-                <div className="aspect-video overflow-hidden bg-gray-100">
-                  <Image
-                    src={urlFor(project.image).width(600).height(340).url()}
-                    alt={project.title}
-                    width={600}
-                    height={340}
-                    className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              )}
               <div className="p-5">
-                <h2 className="font-semibold text-lg mb-2">{project.title}</h2>
-                {project.description && (
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">{project.description}</p>
-                )}
+                <h2 className="font-semibold text-lg mb-2">
+                  {project.clientName ? `${project.clientName}: ` : ""}{project.title}
+                </h2>
                 {project.tags && project.tags.length > 0 && (
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {project.tags.map((tag) => (
                       <span
-                        key={tag}
+                        key={tag._id}
                         className="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded-full"
                       >
-                        {tag}
+                        {tag.name}
                       </span>
                     ))}
                   </div>
                 )}
-                <div className="flex gap-3 text-sm">
-                  {project.url && (
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-900 font-medium hover:underline"
-                    >
-                      Se prosjekt →
-                    </a>
-                  )}
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-500 hover:underline"
-                    >
-                      GitHub
-                    </a>
-                  )}
-                </div>
               </div>
             </Link>
           ))}

@@ -55,5 +55,17 @@ export const homepageType = defineType({
         },
       ],
     }),
+    defineField({
+      name: "featuredProjects",
+      title: "Fremhevede prosjekter",
+      description: "Velg hvilke prosjekter som skal vises på forsiden, og sorter dem i ønsket rekkefølge.",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "project" }],
+        },
+      ],
+    }),
   ],
 });

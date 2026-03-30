@@ -45,7 +45,7 @@ export default function ImageBlock({
   if (layout === "hovedbilde") {
     if (!image) return null;
     return (
-      <section className="px-6 md:px-[55px]">
+      <section className="px-6 md:px-[62px] py-[15px]">
         <div className="relative w-full aspect-[1610/943]">
           <Image
             src={urlFor(image).width(1610).height(943).url()}
@@ -71,7 +71,7 @@ export default function ImageBlock({
 
   if (layout === "toKvadratiske") {
     return (
-      <section className="px-6 md:px-[59px]">
+      <section className="px-6 md:px-[62px] py-[15px]">
         <div className="flex flex-col md:flex-row gap-[30px]">
           {imageList.slice(0, 2).map((item, i) => (
             <div key={i} className="relative w-full md:w-1/2 aspect-square">
@@ -90,7 +90,7 @@ export default function ImageBlock({
 
   if (layout === "treKvadratiske") {
     return (
-      <section className="px-6 md:px-[59px] py-[95px]">
+      <section className="px-6 md:px-[62px] py-[15px]">
         <div className="flex flex-col md:flex-row gap-[30px]">
           {imageList.slice(0, 3).map((item, i) => (
             <div key={i} className="relative w-full md:w-1/3 aspect-square">
@@ -135,7 +135,7 @@ export default function ImageBlock({
     );
 
     return (
-      <section className="px-6 md:px-[59px]">
+      <section className="px-6 md:px-[62px] py-[15px]">
         <div className="flex flex-col md:flex-row gap-[30px] items-end">
           {position === "venstre" ? (
             <>{squareEl}{rectEl}</>
@@ -149,7 +149,7 @@ export default function ImageBlock({
 
   if (layout === "toRektangulare") {
     return (
-      <section className="px-6 md:px-[59px]">
+      <section className="px-6 md:px-[62px] py-[15px]">
         <div className="flex flex-col md:flex-row gap-[30px]">
           {imageList.slice(0, 2).map((item, i) => (
             <div key={i} className="relative w-full md:w-1/2 aspect-[790/517]">
@@ -209,7 +209,7 @@ export default function ImageBlock({
     );
 
     return (
-      <section className="px-6 md:px-[59px]">
+      <section className="px-6 md:px-[62px] py-[15px]">
         <div className="flex flex-col md:flex-row gap-[30px]">
           {position === "venstre" ? (
             <>{bigEl}{smallEls}</>

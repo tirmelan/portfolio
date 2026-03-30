@@ -6,8 +6,16 @@ export const projectType = defineType({
   type: "document",
   fields: [
     defineField({
+      name: "clientName",
+      title: "Navn",
+      description: "Vises i Indivisible foran kolonet, f.eks. «Studio Blå»",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: "title",
-      title: "Tittel",
+      title: "Prosjekttittel",
+      description: "Vises i kursiv etter kolonet, f.eks. «Ny merkevare»",
       type: "string",
       validation: (Rule) => Rule.required(),
     }),
@@ -19,39 +27,66 @@ export const projectType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "description",
-      title: "Beskrivelse",
+      name: "tags",
+      title: "Tags",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "tag" }] }],
+    }),
+    defineField({
+      name: "headerImage",
+      title: "Headerbilde",
+      description: "Stort bilde som vises nederst i headeren",
+      type: "image",
+      options: { hotspot: true },
+    }),
+
+    // --- Intro-seksjon ---
+    defineField({
+      name: "ingress",
+      title: "Ingress",
+      description: "Kort introduksjonstekst til venstre i intro-seksjonen",
       type: "text",
       rows: 4,
     }),
     defineField({
-      name: "image",
-      title: "Bilde",
-      type: "image",
-      options: { hotspot: true },
+      name: "kundeLabel",
+      title: "Første felt: Kunde eller Emne?",
+      type: "string",
+      options: {
+        list: [
+          { title: "Kunde", value: "Kunde" },
+          { title: "Emne", value: "Emne" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "Kunde",
     }),
     defineField({
-      name: "tags",
-      title: "Teknologier / Tags",
-      type: "array",
-      of: [{ type: "string" }],
-      options: { layout: "tags" },
+      name: "kunde",
+      title: "Kunde / Emne",
+      type: "string",
     }),
     defineField({
-      name: "url",
-      title: "Prosjekt-URL",
+      name: "samarbeid",
+      title: "Samarbeid",
+      type: "string",
+    }),
+    defineField({
+      name: "leveranse",
+      title: "Leveranse",
+      type: "string",
+    }),
+    defineField({
+      name: "periode",
+      title: "Periode",
+      type: "string",
+    }),
+    defineField({
+      name: "lenke",
+      title: "Lenke",
       type: "url",
     }),
-    defineField({
-      name: "github",
-      title: "GitHub-URL",
-      type: "url",
-    }),
-    defineField({
-      name: "publishedAt",
-      title: "Publisert",
-      type: "datetime",
-    }),
+
     defineField({
       name: "sections",
       title: "Innhold",

@@ -8,6 +8,14 @@ export const homepageQuery = groq`
       label,
       href,
       color
+    },
+    featuredProjects[]-> {
+      _id,
+      clientName,
+      title,
+      slug,
+      tags[]-> { _id, name, color },
+      headerImage
     }
   }
 `;
@@ -15,28 +23,29 @@ export const homepageQuery = groq`
 export const projectsQuery = groq`
   *[_type == "project"] | order(publishedAt desc) {
     _id,
+    clientName,
     title,
     slug,
-    description,
-    image,
-    tags,
-    url,
-    github,
-    publishedAt
+    tags[]-> { _id, name, color },
+    headerImage
   }
 `;
 
 export const projectQuery = groq`
   *[_type == "project" && slug.current == $slug][0] {
     _id,
+    clientName,
     title,
     slug,
-    description,
-    image,
-    tags,
-    url,
-    github,
-    publishedAt,
+    tags[]-> { _id, name, color },
+    headerImage,
+    ingress,
+    kundeLabel,
+    kunde,
+    samarbeid,
+    leveranse,
+    periode,
+    lenke,
     sections[] {
       _key,
       _type,
