@@ -97,6 +97,22 @@ export const aboutQuery = groq`
       label,
       href,
       color
+    },
+    utdanning[] {
+      grad,
+      institusjon,
+      periode,
+      notat
+    },
+    kurs[] {
+      tittel,
+      leverandor,
+      ar,
+      varighet
+    },
+    anerkjennelse[] {
+      tittel,
+      beskrivelse
     }
   }
 `;

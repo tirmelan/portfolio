@@ -8,7 +8,7 @@ const components: PortableTextComponents = {
   },
   marks: {
     strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
-    em: ({ children }) => <em className="font-serif text-[33px] italic">{children}</em>,
+    em: ({ children }) => <em className="font-serif text-[1.1em] italic">{children}</em>,
     link: ({ value, children }) => (
       <a
         href={value?.href}

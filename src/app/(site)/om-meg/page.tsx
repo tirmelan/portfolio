@@ -2,6 +2,7 @@ import { client } from "@/sanity/client";
 import { aboutQuery } from "@/sanity/queries";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 import Link from "next/link";
+import KursAccordion from "@/components/KursAccordion";
 import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
 
@@ -35,6 +36,9 @@ interface About {
   email?: string;
   phone?: string;
   ctaButtons?: { label: string; href: string; color?: string }[];
+  utdanning?: { grad: string; institusjon?: string; periode?: string; notat?: string }[];
+  kurs?: { tittel: string; leverandor?: string; ar?: string; varighet?: string }[];
+  anerkjennelse?: { tittel: string; beskrivelse?: string }[];
 }
 
 export default async function OmMegPage() {
@@ -148,6 +152,70 @@ export default async function OmMegPage() {
           </div>
         </div>
       </section>
+
+      {/* Utdanning */}
+      {data.utdanning && data.utdanning.length > 0 && (
+        <section className="px-[176px] pb-[60px]">
+          <hr className="border-t border-bla mb-[60px]" />
+          <div className="flex gap-[284px] items-start">
+            <h2 className="font-serif text-[40px] font-normal leading-none text-bla w-[415px] shrink-0">
+              Utdanning
+            </h2>
+            <ul className="flex flex-col gap-[40px] w-[677px]">
+              {data.utdanning.map((item, i) => (
+                <li key={i} className="flex flex-col gap-[2px]">
+                  <p className="font-sans font-semibold text-[20px] leading-[28px] text-bla">
+                    {item.grad}
+                  </p>
+                  {(item.institusjon || item.periode) && (
+                    <p className="font-sans text-[20px] leading-[28px] text-bla opacity-70">
+                      {[item.institusjon, item.periode].filter(Boolean).join(" · ")}
+                    </p>
+                  )}
+                  {item.notat && (
+                    <p className="font-sans text-[20px] leading-[28px] text-bla opacity-50">
+                      {item.notat}
+                    </p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      {/* Kurs */}
+      {data.kurs && data.kurs.length > 0 && (
+        <section className="px-[176px]">
+          <KursAccordion kurs={data.kurs} />
+        </section>
+      )}
+
+      {/* Anerkjennelse */}
+      {data.anerkjennelse && data.anerkjennelse.length > 0 && (
+        <section className="px-[176px] pb-[60px]">
+          <hr className="border-t border-bla mb-[60px]" />
+          <div className="flex gap-[284px] items-start">
+            <h2 className="font-serif text-[40px] font-normal leading-none text-bla w-[415px] shrink-0">
+              Anerkjennelse
+            </h2>
+            <ul className="flex flex-col gap-[40px] w-[677px]">
+              {data.anerkjennelse.map((item, i) => (
+                <li key={i} className="flex flex-col gap-[8px]">
+                  <p className="font-sans font-medium text-[24px] leading-[32px] text-bla">
+                    {item.tittel}
+                  </p>
+                  {item.beskrivelse && (
+                    <p className="font-sans text-[20px] leading-[28px] text-bla opacity-70">
+                      {item.beskrivelse}
+                    </p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
     </>
   );
 }

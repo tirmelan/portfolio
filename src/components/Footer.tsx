@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-lys-bla px-[62px] py-[40px]">
-      <div className="border-t border-bla/20 pt-[40px]">
+      <div className="border-t border-bla pt-[40px]">
         <div className="flex items-center justify-between">
           <Link href="/" className="hover:opacity-80 transition-opacity">
             <Image src="/logo.svg" alt="Meland design logo" width={70} height={70} />

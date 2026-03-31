@@ -105,9 +105,16 @@ export const projectType = defineType({
       name: "sections",
       title: "Innhold",
       type: "array",
-      of: [{ type: "textBlock" }, { type: "imageBlock" }],
+      of: [{ type: "textBlock" }, { type: "textBlockLiten" }, { type: "imageBlock" }],
     }),
   ],
+  preview: {
+    select: {
+      title: "clientName",
+      subtitle: "title",
+      media: "headerImage",
+    },
+  },
   orderings: [
     {
       title: "Nyeste først",

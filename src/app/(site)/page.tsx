@@ -34,11 +34,11 @@ export default async function HomePage() {
     <>
       <section id="top" className="bg-lys-bla flex flex-col items-center justify-center px-6 py-[101px] min-h-[762px]">
         <div className="flex flex-col items-center gap-[41px] w-full max-w-[1095px]">
-          <h1 className="text-bla text-[clamp(3rem,7vw,6.4rem)] font-semibold leading-[1.25] text-center">
+          <h1 className="text-bla text-[clamp(2.7rem,6.3vw,5.75rem)] font-semibold leading-[1.25] text-center">
             {data.title}
           </h1>
           {data.ingress && (
-            <div className="text-bla text-[30px] leading-[normal] text-center max-w-[839px]">
+            <div className="text-bla text-[27px] leading-[normal] text-center max-w-[839px]">
               <PortableTextRenderer value={data.ingress} />
             </div>
           )}
@@ -50,7 +50,7 @@ export default async function HomePage() {
                 <Link
                   key={i}
                   href={btn.href}
-                  className={`${(buttonColors[btn.color ?? "gul"] ?? buttonColors.gul).join(" ")} text-[24px] px-[20px] py-[10px] rounded-full hover:bg-bla hover:text-lys-bla transition-colors inline-flex items-center gap-[9px]`}
+                  className={`${(buttonColors[btn.color ?? "gul"] ?? buttonColors.gul).join(" ")} text-[22px] px-[20px] py-[10px] rounded-full hover:bg-bla hover:text-lys-bla transition-colors inline-flex items-center gap-[9px]`}
                 >
                   {btn.label}
                   <svg aria-hidden="true" width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">

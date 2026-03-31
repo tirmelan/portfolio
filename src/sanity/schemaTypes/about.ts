@@ -56,6 +56,111 @@ export const aboutType = defineType({
       type: "string",
     }),
     defineField({
+      name: "utdanning",
+      title: "Utdanning",
+      description: "Liste over utdanninger.",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({
+              name: "grad",
+              title: "Grad / program",
+              type: "string",
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: "institusjon",
+              title: "Institusjon",
+              type: "string",
+            }),
+            defineField({
+              name: "periode",
+              title: "Periode",
+              type: "string",
+            }),
+            defineField({
+              name: "notat",
+              title: "Notat (valgfri)",
+              description: "F.eks. utveksling, valgfag, spesialisering o.l.",
+              type: "string",
+            }),
+          ],
+          preview: {
+            select: { title: "grad", subtitle: "institusjon" },
+          },
+        },
+      ],
+    }),
+    defineField({
+      name: "kurs",
+      title: "Kurs",
+      description: "Liste over kurs og sertifiseringer. Vises som nedtrekksliste på siden.",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({
+              name: "tittel",
+              title: "Tittel",
+              type: "string",
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: "leverandor",
+              title: "Leverandør",
+              description: "F.eks. Coursera, LinkedIn Learning, Fagskolen o.l.",
+              type: "string",
+            }),
+            defineField({
+              name: "ar",
+              title: "År",
+              type: "string",
+            }),
+            defineField({
+              name: "varighet",
+              title: "Varighet",
+              description: "F.eks. «fem dager», «to dager»",
+              type: "string",
+            }),
+          ],
+          preview: {
+            select: { title: "tittel", subtitle: "leverandor" },
+          },
+        },
+      ],
+    }),
+    defineField({
+      name: "anerkjennelse",
+      title: "Anerkjennelse",
+      description: "Liste over priser og anerkjennelser.",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({
+              name: "tittel",
+              title: "Tittel",
+              type: "string",
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: "beskrivelse",
+              title: "Beskrivelse",
+              type: "text",
+              rows: 3,
+            }),
+          ],
+          preview: {
+            select: { title: "tittel", subtitle: "beskrivelse" },
+          },
+        },
+      ],
+    }),
+    defineField({
       name: "ctaButtons",
       title: "CTA-knapper",
       type: "array",
