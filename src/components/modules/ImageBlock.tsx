@@ -221,5 +221,52 @@ export default function ImageBlock({
     );
   }
 
+  if (layout === "fireIRekke") {
+    return (
+      <section className="px-6 md:px-[62px] py-[15px]">
+        <div className="flex flex-col md:flex-row gap-[25px]">
+          {imageList.slice(0, 4).map((item, i) => (
+            <div key={i} className="relative w-full md:w-1/4 aspect-square">
+              <Image
+                src={urlFor(item.image).width(400).height(400).url()}
+                alt={item.alt || ""}
+                fill
+                className="object-cover"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+  }
+
+  if (layout === "treGangerTre") {
+    const rows = [
+      imageList.slice(0, 3),
+      imageList.slice(3, 6),
+      imageList.slice(6, 9),
+    ];
+    return (
+      <section className="px-6 md:px-[62px] py-[15px]">
+        <div className="flex flex-col gap-[25px]">
+          {rows.map((row, ri) => (
+            <div key={ri} className="flex flex-col md:flex-row gap-[25px]">
+              {row.map((item, ci) => (
+                <div key={ci} className="relative w-full md:w-1/3 aspect-square">
+                  <Image
+                    src={urlFor(item.image).width(450).height(450).url()}
+                    alt={item.alt || ""}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+  }
+
   return null;
 }

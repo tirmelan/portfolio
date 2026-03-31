@@ -17,6 +17,8 @@ export const imageBlockType = defineType({
           { title: "Kvadrat og rektangel", value: "kvadratRektangel" },
           { title: "To rektangulære bilder", value: "toRektangulare" },
           { title: "Stor og liten (tre bilder grid)", value: "storOgLiten" },
+          { title: "Fire i rekke", value: "fireIRekke" },
+          { title: "3×3 rutenett (ni bilder)", value: "treGangerTre" },
         ],
         layout: "radio",
       },
@@ -100,6 +102,8 @@ export const imageBlockType = defineType({
         kvadratRektangel: "Kvadrat og rektangel",
         toRektangulare: "To rektangulære bilder",
         storOgLiten: "Stor og liten (tre bilder grid)",
+        fireIRekke: "Fire i rekke",
+        treGangerTre: "3×3 rutenett (ni bilder)",
       };
       return {
         title: titles[layout] || "Bildemodul",
