@@ -4,9 +4,9 @@ import PortableTextRenderer from "@/components/PortableTextRenderer";
 import Link from "next/link";
 import KursAccordion from "@/components/KursAccordion";
 import Image from "next/image";
-import imageUrlBuilder from "@sanity/image-url";
+import { createImageUrlBuilder } from "@sanity/image-url";
 
-const builder = imageUrlBuilder(client);
+const builder = createImageUrlBuilder(client);
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function urlFor(source: any) {
   return builder.image(source);
@@ -60,15 +60,21 @@ export default async function OmMegPage() {
       <header>
         <div className="px-6 md:px-[57px] pt-[60px] pb-[40px]">
           <h1 className="font-sans font-medium text-[40px] md:text-[64px] leading-[1.07] text-bla">
-            {data.label && <>{data.label}:{" "}</>}
-            <em className="font-serif italic">{data.title ?? "Om meg"}</em>
+            {data.title ? (
+              <>
+                {data.label && <>{data.label}:{" "}</>}
+                <em className="font-serif italic">{data.title}</em>
+              </>
+            ) : (
+              data.label ?? "Om meg"
+            )}
           </h1>
         </div>
         {data.headerImage && (
           <div className="px-6 md:px-[62px]">
             <div className="relative w-full aspect-[1610/943]">
               <Image
-                src={urlFor(data.headerImage).width(1610).height(943).url()}
+                src={urlFor(data.headerImage).url()}
                 alt=""
                 fill
                 className="object-cover"
@@ -138,7 +144,7 @@ export default async function OmMegPage() {
               {data.ctaButtons.map((btn, i) => (
                 <Link
                   key={i}
-                  href={btn.href}
+                  href={btn.href ?? "#"}
                   className={`${(buttonColors[btn.color ?? "gul"] ?? buttonColors.gul).join(" ")} text-[24px] px-[20px] py-[10px] rounded-full hover:bg-bla hover:text-lys-bla transition-colors inline-flex items-center gap-[9px]`}
                 >
                   {btn.label}
@@ -184,13 +190,6 @@ export default async function OmMegPage() {
         </section>
       )}
 
-      {/* Kurs */}
-      {data.kurs && data.kurs.length > 0 && (
-        <section className="px-[176px]">
-          <KursAccordion kurs={data.kurs} />
-        </section>
-      )}
-
       {/* Anerkjennelse */}
       {data.anerkjennelse && data.anerkjennelse.length > 0 && (
         <section className="px-[176px] pb-[60px]">
@@ -214,6 +213,13 @@ export default async function OmMegPage() {
               ))}
             </ul>
           </div>
+        </section>
+      )}
+
+      {/* Kurs */}
+      {data.kurs && data.kurs.length > 0 && (
+        <section className="px-[176px]">
+          <KursAccordion kurs={data.kurs} />
         </section>
       )}
     </>

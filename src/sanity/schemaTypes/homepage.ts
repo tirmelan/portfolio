@@ -56,6 +56,7 @@ export const homepageType = defineType({
                   { title: "Prosjekter", value: "/prosjekter" },
                   { title: "Om meg", value: "/om-meg" },
                   { title: "CV", value: "/cv" },
+                  { title: "Kontakt", value: "/kontakt" },
                 ],
               },
               hidden: ({ parent }) => parent?.linkType === "ekstern",

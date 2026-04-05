@@ -7,6 +7,7 @@ interface Kurs {
   leverandor?: string;
   ar?: string;
   varighet?: string;
+  beskrivelse?: string;
 }
 
 interface KursAccordionProps {
@@ -29,6 +30,11 @@ function KursEntry({ item }: { item: Kurs }) {
           {varighet && <span>{meta ? " | " : ""}{varighet}</span>}
         </p>
       )}
+      {item.beskrivelse && (
+        <p className="font-sans text-[20px] leading-[28px] text-bla opacity-60 mt-[4px]">
+          {item.beskrivelse}
+        </p>
+      )}
     </li>
   );
 }
@@ -43,18 +49,18 @@ export default function KursAccordion({ kurs }: KursAccordionProps) {
   return (
     <div>
       {/* Header row */}
-      <div className="border-t border-bla py-[60px] flex items-center justify-between">
+      <button
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className="w-full border-t border-bla py-[60px] flex items-center justify-between hover:opacity-70 transition-opacity outline-none"
+      >
         <span className="font-serif text-[40px] font-normal leading-none text-bla">
           Kurs
         </span>
-        <button
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          className="font-serif text-[28px] font-normal leading-none text-bla hover:opacity-70 transition-opacity outline-none"
-        >
+        <span className="font-serif text-[28px] font-normal leading-none text-bla">
           {open ? "−" : "+"}
-        </button>
-      </div>
+        </span>
+      </button>
 
       {/* Expanded content */}
       {open && (

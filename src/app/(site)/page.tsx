@@ -49,7 +49,7 @@ export default async function HomePage() {
               (btn: { label: string; href: string; color?: string }, i: number) => (
                 <Link
                   key={i}
-                  href={btn.href}
+                  href={btn.href ?? "#"}
                   className={`${(buttonColors[btn.color ?? "gul"] ?? buttonColors.gul).join(" ")} text-[22px] px-[20px] py-[10px] rounded-full hover:bg-bla hover:text-lys-bla transition-colors inline-flex items-center gap-[9px]`}
                 >
                   {btn.label}
@@ -73,8 +73,11 @@ export default async function HomePage() {
               title: string;
               slug: { current: string };
               tags?: { _id: string; name: string; color: string }[];
+              previewLayout?: "to-bilder" | "ett-bilde";
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               headerImage?: any;
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              previewImage?: any;
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               previewImageLeft?: any;
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -86,7 +89,9 @@ export default async function HomePage() {
                   title={project.title}
                   slug={project.slug}
                   tags={project.tags}
+                  previewLayout={project.previewLayout}
                   headerImage={project.headerImage}
+                  previewImage={project.previewImage}
                   previewImageLeft={project.previewImageLeft}
                   previewImageRight={project.previewImageRight}
                 />

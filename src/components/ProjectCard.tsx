@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import imageUrlBuilder from "@sanity/image-url";
+import { createImageUrlBuilder } from "@sanity/image-url";
 import { client } from "@/sanity/client";
 
-const builder = imageUrlBuilder(client);
+const builder = createImageUrlBuilder(client);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function urlFor(source: any) {
@@ -30,8 +30,11 @@ interface ProjectCardProps {
   title: string;
   slug: { current: string };
   tags?: Tag[];
+  previewLayout?: "to-bilder" | "ett-bilde";
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   headerImage?: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  previewImage?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   previewImageLeft?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -43,12 +46,15 @@ export default function ProjectCard({
   title,
   slug,
   tags,
+  previewLayout = "to-bilder",
   headerImage,
+  previewImage,
   previewImageLeft,
   previewImageRight,
 }: ProjectCardProps) {
   const imageLeft = previewImageLeft ?? headerImage;
   const imageRight = previewImageRight ?? headerImage;
+  const singleImage = previewImage ?? headerImage;
 
   return (
     <Link href={`/prosjekter/${slug.current}`} className="block group">
@@ -82,30 +88,46 @@ export default function ProjectCard({
       {/* Separator between title row and images */}
       <hr className="border-t border-bla" />
 
-      {/* Two preview images — full width, edge to edge */}
-      {(imageLeft || imageRight) && (
-        <div className="flex">
-          <div className="relative flex-1 aspect-square overflow-hidden">
-            {imageLeft && (
-              <Image
-                src={urlFor(imageLeft).width(800).height(800).url()}
-                alt=""
-                fill
-                className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
-              />
-            )}
+      {/* Preview image(s) */}
+      {previewLayout === "ett-bilde" ? (
+        singleImage && (
+          <div className="relative w-full aspect-[2/1] overflow-hidden">
+            <Image
+              src={urlFor(singleImage).url()}
+              alt=""
+              fill
+              sizes="100vw"
+              className="object-cover"
+            />
           </div>
-          <div className="relative flex-1 aspect-square overflow-hidden">
-            {imageRight && (
-              <Image
-                src={urlFor(imageRight).width(800).height(800).url()}
-                alt=""
-                fill
-                className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
-              />
-            )}
+        )
+      ) : (
+        (imageLeft || imageRight) && (
+          <div className="flex">
+            <div className="relative flex-1 aspect-square overflow-hidden">
+              {imageLeft && (
+                <Image
+                  src={urlFor(imageLeft).url()}
+                  alt=""
+                  fill
+                  sizes="50vw"
+                  className="object-cover"
+                />
+              )}
+            </div>
+            <div className="relative flex-1 aspect-square overflow-hidden">
+              {imageRight && (
+                <Image
+                  src={urlFor(imageRight).url()}
+                  alt=""
+                  fill
+                  sizes="50vw"
+                  className="object-cover"
+                />
+              )}
+            </div>
           </div>
-        </div>
+        )
       )}
     </Link>
   );

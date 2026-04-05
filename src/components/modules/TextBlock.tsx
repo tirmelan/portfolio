@@ -61,7 +61,7 @@ export default function TextBlock({ title, body, size = "stor" }: TextBlockProps
     <section className="px-6 md:px-[176px] py-[106px]">
       <div className="flex flex-col gap-10 md:flex-row md:gap-[284px] text-bla">
         {title && (
-          <h2 className={`font-serif ${titleSize[size]} font-normal leading-normal shrink-0 md:w-[415px]`}>
+          <h2 className={`font-serif ${titleSize[size]} font-normal leading-[1.2] shrink-0 md:w-[415px]`}>
             {title}
           </h2>
         )}

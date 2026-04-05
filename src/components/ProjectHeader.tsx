@@ -1,8 +1,8 @@
 import Image from "next/image";
-import imageUrlBuilder from "@sanity/image-url";
+import { createImageUrlBuilder } from "@sanity/image-url";
 import { client } from "@/sanity/client";
 
-const builder = imageUrlBuilder(client);
+const builder = createImageUrlBuilder(client);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function urlFor(source: any) {
@@ -42,7 +42,7 @@ export default function ProjectHeader({
   return (
     <header>
       {/* Text + tags */}
-      <div className="px-6 md:px-[57px] pt-[60px] pb-[40px] flex flex-col gap-6">
+      <div className="px-6 md:px-[57px] pt-[60px] pb-[56px] flex flex-col gap-6">
         {/* Title line */}
         <h1 className="font-sans font-medium text-[40px] md:text-[64px] leading-[1.07] text-bla">
           {clientName}:{" "}
@@ -72,9 +72,10 @@ export default function ProjectHeader({
         <div className="px-6 md:px-[62px]">
           <div className="relative w-full aspect-[1610/943]">
             <Image
-              src={urlFor(headerImage).width(1610).height(943).url()}
+              src={urlFor(headerImage).url()}
               alt=""
               fill
+              sizes="(max-width: 768px) 100vw, calc(100vw - 124px)"
               className="object-cover"
               priority
             />

@@ -18,6 +18,8 @@ export const imageBlockType = defineType({
           { title: "To rektangulære bilder", value: "toRektangulare" },
           { title: "Stor og liten (tre bilder grid)", value: "storOgLiten" },
           { title: "Fire i rekke", value: "fireIRekke" },
+          { title: "2×2 rutenett (fire bilder)", value: "toGangerTo" },
+          { title: "To høye bilder (portrett)", value: "toHoye" },
           { title: "3×3 rutenett (ni bilder)", value: "treGangerTre" },
         ],
         layout: "radio",
@@ -103,6 +105,8 @@ export const imageBlockType = defineType({
         toRektangulare: "To rektangulære bilder",
         storOgLiten: "Stor og liten (tre bilder grid)",
         fireIRekke: "Fire i rekke",
+        toGangerTo: "2×2 rutenett (fire bilder)",
+        toHoye: "To høye bilder (portrett)",
         treGangerTre: "3×3 rutenett (ni bilder)",
       };
       return {

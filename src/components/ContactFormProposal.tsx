@@ -45,10 +45,10 @@ export default function ContactFormProposal() {
         {/* Left: serif intro + contact info */}
         <div className="flex flex-col gap-[40px] w-[415px] shrink-0">
           <h2 className="font-serif text-[50px] leading-[1.15] text-bla">
-            Har du et prosjekt i tankene?
+            La oss komme i kontakt
           </h2>
           <p className="font-sans text-bla text-[20px] leading-[30px]">
-            Jeg er tilgjengelig for frilansoppdrag og samarbeid. Send meg en melding, så svarer jeg innen et par dager.
+            Jeg er alltid åpen for nye muligheter der jeg kan bidra og utvikle meg videre. Ta gjerne kontakt hvis du vil ta en prat.
           </p>
           <div className="flex flex-col gap-[10px]">
             <a
@@ -71,6 +71,20 @@ export default function ContactFormProposal() {
               </svg>
               90 94 80 95
             </a>
+            <a
+              href="https://www.linkedin.com/in/tiril-johnslien-meland-819639249"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-sans text-bla text-[20px] leading-[28px] flex items-center gap-[10px] hover:opacity-60 transition-opacity"
+            >
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="1" y="1" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="1.2"/>
+                <path d="M5 8V15M5 5.5V5.6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+                <path d="M9 15V11C9 9.9 9.9 9 11 9C12.1 9 13 9.9 13 11V15" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M9 8V15" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+              </svg>
+              LinkedIn
+            </a>
           </div>
         </div>
 
@@ -85,7 +99,7 @@ export default function ContactFormProposal() {
                 </label>
                 <input
                   type="text"
-                  placeholder="Fornavn etternavn"
+                  placeholder="Hva heter du?"
                   value={form.navn}
                   onChange={(e) => setForm({ ...form, navn: e.target.value })}
                   required
@@ -114,7 +128,7 @@ export default function ContactFormProposal() {
                   Melding
                 </label>
                 <textarea
-                  placeholder="Fortell meg om prosjektet ditt"
+                  placeholder="Store og små tanker er like velkomne"
                   rows={5}
                   value={form.melding}
                   onChange={(e) => setForm({ ...form, melding: e.target.value })}
@@ -135,7 +149,14 @@ export default function ContactFormProposal() {
                   disabled={status === "sending"}
                   className="font-sans font-medium text-[18px] leading-[28px] text-lys-bla bg-bla rounded-full px-[28px] py-[12px] hover:opacity-80 transition-opacity disabled:opacity-40"
                 >
-                  {status === "sending" ? "Sender..." : "Send melding →"}
+                  {status === "sending" ? "Sender..." : (
+                    <>
+                      Send melding
+                      <svg aria-hidden="true" width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="inline ml-[9px]">
+                        <path d="M1 6H17M12 1L17 6L12 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </>
+                  )}
                 </button>
               </div>
 

@@ -6,7 +6,7 @@ export const homepageQuery = groq`
     ingress,
     ctaButtons[] {
       label,
-      href,
+      "href": coalesce(internalPage, externalUrl),
       color
     },
     featuredProjects[]-> {
@@ -16,6 +16,8 @@ export const homepageQuery = groq`
       slug,
       tags[]-> { _id, name, color },
       headerImage,
+      previewLayout,
+      previewImage,
       previewImageLeft,
       previewImageRight
     }
@@ -95,7 +97,7 @@ export const aboutQuery = groq`
     phone,
     ctaButtons[] {
       label,
-      href,
+      "href": coalesce(internalPage, externalUrl),
       color
     },
     utdanning[] {
@@ -108,7 +110,8 @@ export const aboutQuery = groq`
       tittel,
       leverandor,
       ar,
-      varighet
+      varighet,
+      beskrivelse
     },
     anerkjennelse[] {
       tittel,

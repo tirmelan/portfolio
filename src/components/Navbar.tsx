@@ -10,7 +10,7 @@ export default function Navbar() {
     <nav className="bg-lys-bla px-[60px] py-[39px]">
       <div className="flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-          <Image src="/logo.svg" alt="Meland design logo" width={62} height={62} />
+          <Image src="/logo.svg" alt="Meland design logo" width={62} height={62} loading="eager" />
           <span className="font-semibold text-[19px] text-bla">
             Meland design
           </span>

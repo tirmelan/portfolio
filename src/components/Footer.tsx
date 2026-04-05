@@ -16,7 +16,7 @@ export default function Footer() {
               <p className="font-serif text-bla text-[17px] leading-[25px] mb-[1px]">
                 Hopp til...
               </p>
-              <Link href="/#top" className="text-bla text-[14px] leading-[26px] hover:opacity-70 transition-opacity inline-flex items-center gap-[4px]">
+              <Link href="/" className="text-bla text-[14px] leading-[26px] hover:opacity-70 transition-opacity inline-flex items-center gap-[4px]">
                 Prosjekter <svg aria-hidden="true" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 4H11M8 1L11 4L8 7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </Link>
               <Link href="/om-meg" className="text-bla text-[14px] leading-[26px] hover:opacity-70 transition-opacity inline-flex items-center gap-[4px]">

@@ -40,11 +40,25 @@ export const projectType = defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: "previewLayout",
+      title: "Forhåndsvisning — layout",
+      type: "string",
+      options: {
+        list: [
+          { title: "To bilder side om side", value: "to-bilder" },
+          { title: "Ett stort bilde", value: "ett-bilde" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "to-bilder",
+    }),
+    defineField({
       name: "previewImageLeft",
       title: "Forhåndsvisning — venstre bilde",
       description: "Venstre bilde i prosjektkortet på forsiden",
       type: "image",
       options: { hotspot: true },
+      hidden: ({ parent }) => parent?.previewLayout === "ett-bilde",
     }),
     defineField({
       name: "previewImageRight",
@@ -52,6 +66,15 @@ export const projectType = defineType({
       description: "Høyre bilde i prosjektkortet på forsiden",
       type: "image",
       options: { hotspot: true },
+      hidden: ({ parent }) => parent?.previewLayout === "ett-bilde",
+    }),
+    defineField({
+      name: "previewImage",
+      title: "Forhåndsvisning — bilde",
+      description: "Bilde som vises i prosjektkortet på forsiden",
+      type: "image",
+      options: { hotspot: true },
+      hidden: ({ parent }) => parent?.previewLayout !== "ett-bilde",
     }),
 
     // --- Intro-seksjon ---
@@ -105,7 +128,7 @@ export const projectType = defineType({
       name: "sections",
       title: "Innhold",
       type: "array",
-      of: [{ type: "textBlock" }, { type: "textBlockLiten" }, { type: "imageBlock" }],
+      of: [{ type: "textBlock" }, { type: "imageBlock" }],
     }),
   ],
   preview: {

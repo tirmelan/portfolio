@@ -15,9 +15,8 @@ export const aboutType = defineType({
     defineField({
       name: "title",
       title: "Tittel",
-      description: "Teksten i kursiv (f.eks. «meg»).",
+      description: "Teksten i kursiv etter kolon. La stå tom for kun å vise label.",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "headerImage",
@@ -125,6 +124,12 @@ export const aboutType = defineType({
               description: "F.eks. «fem dager», «to dager»",
               type: "string",
             }),
+            defineField({
+              name: "beskrivelse",
+              title: "Beskrivelse",
+              type: "text",
+              rows: 3,
+            }),
           ],
           preview: {
             select: { title: "tittel", subtitle: "leverandor" },
@@ -175,10 +180,39 @@ export const aboutType = defineType({
               validation: (Rule) => Rule.required(),
             }),
             defineField({
-              name: "href",
-              title: "Lenke",
+              name: "linkType",
+              title: "Lenketype",
               type: "string",
-              validation: (Rule) => Rule.required(),
+              options: {
+                list: [
+                  { title: "Intern side", value: "intern" },
+                  { title: "Ekstern URL", value: "ekstern" },
+                ],
+                layout: "radio",
+                direction: "horizontal",
+              },
+              initialValue: "intern",
+            }),
+            defineField({
+              name: "internalPage",
+              title: "Intern side",
+              type: "string",
+              options: {
+                list: [
+                  { title: "Forside", value: "/" },
+                  { title: "Prosjekter", value: "/prosjekter" },
+                  { title: "Om meg", value: "/om-meg" },
+                  { title: "CV", value: "/cv" },
+                  { title: "Kontakt", value: "/kontakt" },
+                ],
+              },
+              hidden: ({ parent }) => parent?.linkType === "ekstern",
+            }),
+            defineField({
+              name: "externalUrl",
+              title: "Ekstern URL",
+              type: "url",
+              hidden: ({ parent }) => parent?.linkType !== "ekstern",
             }),
             defineField({
               name: "color",
