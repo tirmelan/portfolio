@@ -2,8 +2,17 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Min portefølje",
+  title: "Tiril Meland",
+  description: "Meland design er Tiril Johnslien Melands designstudio. Her finner du et utvalg av prosjekter innen visuell identitet, grafisk design og UX.",
+  metadataBase: new URL("https://tirilmeland.no"),
+  openGraph: {
+    title: "Tiril Meland",
+    description: "Meland design er Tiril Johnslien Melands designstudio. Her finner du et utvalg av prosjekter innen visuell identitet, grafisk design og UX.",
+    url: "https://tirilmeland.no",
+    siteName: "Meland design",
+    locale: "nb_NO",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -12,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="no" className="h-full antialiased">
+    <html lang="no" className="h-full antialiased scroll-smooth">
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/yfv1rla.css" />
         <link rel="stylesheet" href="https://use.typekit.net/pfc0jny.css" />

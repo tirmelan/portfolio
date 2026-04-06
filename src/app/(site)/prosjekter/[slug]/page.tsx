@@ -5,6 +5,7 @@ import TextBlock from "@/components/modules/TextBlock";
 import ImageBlock from "@/components/modules/ImageBlock";
 import ProjectHeader from "@/components/ProjectHeader";
 import ProjectIntro from "@/components/ProjectIntro";
+import ScrollReveal from "@/components/animations/ScrollReveal";
 
 export const revalidate = 60;
 
@@ -23,26 +24,31 @@ function SectionRenderer({ sections }: { sections: any[] }) {
         switch (section._type) {
           case "textBlock":
             return (
-              <TextBlock key={section._key} title={section.title} body={section.body} size={section.storTittel === false ? "liten" : "stor"} />
+              <ScrollReveal key={section._key}>
+                <TextBlock title={section.title} body={section.body} size={section.storTittel === false ? "liten" : "stor"} />
+              </ScrollReveal>
             );
           case "textBlockLiten":
             return (
-              <TextBlock key={section._key} title={section.title} body={section.body} size="liten" />
+              <ScrollReveal key={section._key}>
+                <TextBlock title={section.title} body={section.body} size="liten" />
+              </ScrollReveal>
             );
           case "imageBlock":
             return (
-              <ImageBlock
-                key={section._key}
-                layout={section.layout}
-                position={section.position}
-                image={section.image}
-                alt={section.alt}
-                images={section.images}
-                imageLeft={section.imageLeft}
-                altLeft={section.altLeft}
-                imageRight={section.imageRight}
-                altRight={section.altRight}
-              />
+              <ScrollReveal key={section._key}>
+                <ImageBlock
+                  layout={section.layout}
+                  position={section.position}
+                  image={section.image}
+                  alt={section.alt}
+                  images={section.images}
+                  imageLeft={section.imageLeft}
+                  altLeft={section.altLeft}
+                  imageRight={section.imageRight}
+                  altRight={section.altRight}
+                />
+              </ScrollReveal>
             );
           default:
             return null;
@@ -71,6 +77,7 @@ export default async function ProsjektPage({
         title={project.title}
         tags={project.tags}
         headerImage={project.headerImage}
+        headerImageCaption={project.headerImageCaption}
       />
       <ProjectIntro
         ingress={project.ingress}
@@ -80,6 +87,7 @@ export default async function ProsjektPage({
         leveranse={project.leveranse}
         periode={project.periode}
         lenke={project.lenke}
+        lenkeTittel={project.lenkeTittel}
       />
       <SectionRenderer sections={project.sections} />
     </article>

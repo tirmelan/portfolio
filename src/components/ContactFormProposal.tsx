@@ -21,8 +21,8 @@ export default function ContactFormProposal() {
 
   if (status === "sent") {
     return (
-      <section className="px-[176px] py-[160px] flex flex-col items-center text-center gap-[24px]">
-        <p className="font-serif text-[64px] leading-[1.1] text-bla">
+      <section className="px-6 md:px-[176px] py-[80px] md:py-[160px] flex flex-col items-center text-center gap-[24px]">
+        <p className="font-serif text-[40px] md:text-[64px] leading-[1.1] text-bla">
           Takk for meldingen!
         </p>
         <p className="font-sans text-bla text-[20px] leading-[30px] max-w-[520px]">
@@ -39,12 +39,12 @@ export default function ContactFormProposal() {
   }
 
   return (
-    <section className="px-[176px] py-[106px]">
-      <div className="flex gap-[284px] items-start">
+    <section className="px-6 md:px-[176px] py-[60px] md:py-[106px]">
+      <div className="flex flex-col md:flex-row md:gap-[284px] md:items-start gap-12">
 
         {/* Left: serif intro + contact info */}
-        <div className="flex flex-col gap-[40px] w-[415px] shrink-0">
-          <h2 className="font-serif text-[50px] leading-[1.15] text-bla">
+        <div className="flex flex-col gap-[40px] md:w-[415px] shrink-0">
+          <h2 className="font-serif text-[34px] md:text-[50px] leading-[1.15] text-bla">
             La oss komme i kontakt
           </h2>
           <p className="font-sans text-bla text-[20px] leading-[30px]">
@@ -62,7 +62,7 @@ export default function ContactFormProposal() {
               tirmelan@gmail.com
             </a>
             <a
-              href="tel:90948095"
+              href="tel:+4790948095"
               className="font-sans text-bla text-[20px] leading-[28px] flex items-center gap-[10px] hover:opacity-60 transition-opacity"
             >
               <svg aria-hidden="true" width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -89,7 +89,7 @@ export default function ContactFormProposal() {
         </div>
 
         {/* Right: form */}
-        <div className="w-[677px]">
+        <div className="w-full md:w-[677px]">
           <form onSubmit={handleSubmit} className="flex flex-col gap-0">
 
               {/* Navn */}

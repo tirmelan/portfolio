@@ -25,6 +25,12 @@ export const aboutType = defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: "headerImageCaption",
+      title: "Bildetekst",
+      description: "Valgfri tekst som vises under headerbildet.",
+      type: "string",
+    }),
+    defineField({
       name: "sectionTitle",
       title: "Seksjonstittel",
       description: "Teksten som vises til venstre i serif-font (f.eks. «Historie, filosofi og inspirasjon»).",

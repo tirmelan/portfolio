@@ -24,15 +24,14 @@
   --font-serif: "plantin", serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+
+html {
+  overflow-x: hidden;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: "indivisible", sans-serif;
+  overflow-x: hidden;
 }

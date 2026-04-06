@@ -20,18 +20,18 @@ function KursEntry({ item }: { item: Kurs }) {
 
   return (
     <li className="flex flex-col">
-      <p className="font-sans font-medium text-[22px] leading-[32px] text-bla">
+      <p className="font-sans font-medium text-[16px] md:text-[22px] leading-[24px] md:leading-[32px] text-bla">
         {item.tittel}
       </p>
       {(meta || varighet) && (
-        <p className="font-sans text-[22px] leading-[32px] text-bla opacity-70">
+        <p className="font-sans text-[15px] md:text-[22px] leading-[22px] md:leading-[32px] text-bla opacity-70">
           {meta && <em className="font-serif italic not-italic" style={{ fontFamily: "plantin, serif", fontStyle: "italic" }}>{item.leverandor}</em>}
           {meta && item.ar && <span> - {item.ar}</span>}
           {varighet && <span>{meta ? " | " : ""}{varighet}</span>}
         </p>
       )}
       {item.beskrivelse && (
-        <p className="font-sans text-[20px] leading-[28px] text-bla opacity-60 mt-[4px]">
+        <p className="font-sans text-[14px] md:text-[20px] leading-[20px] md:leading-[28px] text-bla opacity-60 mt-[4px]">
           {item.beskrivelse}
         </p>
       )}
@@ -52,25 +52,25 @@ export default function KursAccordion({ kurs }: KursAccordionProps) {
       <button
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        className="w-full border-t border-bla py-[60px] flex items-center justify-between hover:opacity-70 transition-opacity outline-none"
+        className="w-full border-t border-bla py-[40px] md:py-[60px] flex items-center justify-between hover:opacity-70 transition-opacity outline-none"
       >
-        <span className="font-serif text-[40px] font-normal leading-none text-bla">
+        <span className="font-serif text-[24px] md:text-[40px] font-normal leading-none text-bla">
           Kurs
         </span>
-        <span className="font-serif text-[28px] font-normal leading-none text-bla">
+        <span className="font-serif text-[20px] md:text-[28px] font-normal leading-none text-bla">
           {open ? "−" : "+"}
         </span>
       </button>
 
       {/* Expanded content */}
       {open && (
-        <div className="flex gap-[108px] pb-[60px]">
-          <ul className="flex-1 flex flex-col gap-[40px]">
+        <div className="flex flex-col md:flex-row md:gap-[108px] pb-[40px] md:pb-[60px] gap-[24px] md:gap-[40px]">
+          <ul className="flex-1 flex flex-col gap-[24px] md:gap-[40px]">
             {left.map((item, i) => (
               <KursEntry key={i} item={item} />
             ))}
           </ul>
-          <ul className="flex-1 flex flex-col gap-[40px]">
+          <ul className="flex-1 flex flex-col gap-[24px] md:gap-[40px]">
             {right.map((item, i) => (
               <KursEntry key={i} item={item} />
             ))}

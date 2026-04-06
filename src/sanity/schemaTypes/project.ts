@@ -40,6 +40,12 @@ export const projectType = defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: "headerImageCaption",
+      title: "Bildetekst",
+      description: "Valgfri tekst som vises under headerbildet.",
+      type: "string",
+    }),
+    defineField({
       name: "previewLayout",
       title: "Forhåndsvisning — layout",
       type: "string",
@@ -122,6 +128,12 @@ export const projectType = defineType({
       name: "lenke",
       title: "Lenke",
       type: "url",
+    }),
+    defineField({
+      name: "lenkeTittel",
+      title: "Lenketittel",
+      description: "Valgfri visningstittel for lenken, f.eks. «fermentering.com»",
+      type: "string",
     }),
 
     defineField({

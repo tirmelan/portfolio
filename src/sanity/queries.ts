@@ -43,6 +43,7 @@ export const projectQuery = groq`
     slug,
     tags[]-> { _id, name, color },
     headerImage,
+    headerImageCaption,
     ingress,
     kundeLabel,
     kunde,
@@ -50,6 +51,7 @@ export const projectQuery = groq`
     leveranse,
     periode,
     lenke,
+    lenkeTittel,
     sections[] {
       _key,
       _type,
@@ -90,6 +92,7 @@ export const aboutQuery = groq`
     label,
     title,
     headerImage,
+    headerImageCaption,
     sectionTitle,
     ingress,
     brodtekst,

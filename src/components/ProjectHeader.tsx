@@ -31,6 +31,7 @@ interface ProjectHeaderProps {
   tags?: Tag[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   headerImage?: any;
+  headerImageCaption?: string;
 }
 
 export default function ProjectHeader({
@@ -38,13 +39,14 @@ export default function ProjectHeader({
   title,
   tags,
   headerImage,
+  headerImageCaption,
 }: ProjectHeaderProps) {
   return (
     <header>
       {/* Text + tags */}
-      <div className="px-6 md:px-[57px] pt-[60px] pb-[56px] flex flex-col gap-6">
+      <div className="px-6 md:px-[57px] pt-[32px] md:pt-[60px] pb-[24px] md:pb-[56px] flex flex-col gap-4 md:gap-6">
         {/* Title line */}
-        <h1 className="font-sans font-medium text-[40px] md:text-[64px] leading-[1.07] text-bla">
+        <h1 className="font-sans font-medium text-[28px] md:text-[64px] leading-[1.07] text-bla">
           {clientName}:{" "}
           <em className="font-serif italic">{title}</em>
         </h1>
@@ -57,7 +59,7 @@ export default function ProjectHeader({
               return (
                 <span
                   key={tag._id}
-                  className={`${bg} ${text} font-sans text-[20px] leading-normal px-[15px] py-[3px] rounded-full whitespace-nowrap cursor-default`}
+                  className={`${bg} ${text} font-sans text-[14px] md:text-[20px] leading-normal px-[10px] md:px-[15px] py-[3px] rounded-full whitespace-nowrap cursor-default`}
                 >
                   {tag.name}
                 </span>
@@ -80,6 +82,11 @@ export default function ProjectHeader({
               priority
             />
           </div>
+          {headerImageCaption && (
+            <p className="font-sans text-[13px] md:text-[20px] leading-[20px] md:leading-[28px] text-bla mt-2 md:mt-3">
+              {headerImageCaption}
+            </p>
+          )}
         </div>
       )}
     </header>

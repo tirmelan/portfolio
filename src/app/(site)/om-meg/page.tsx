@@ -5,6 +5,7 @@ import Link from "next/link";
 import KursAccordion from "@/components/KursAccordion";
 import Image from "next/image";
 import { createImageUrlBuilder } from "@sanity/image-url";
+import ScrollReveal from "@/components/animations/ScrollReveal";
 
 const builder = createImageUrlBuilder(client);
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -28,6 +29,7 @@ interface About {
   title?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   headerImage?: any;
+  headerImageCaption?: string;
   sectionTitle?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ingress?: any[];
@@ -58,8 +60,8 @@ export default async function OmMegPage() {
   return (
     <>
       <header>
-        <div className="px-6 md:px-[57px] pt-[60px] pb-[40px]">
-          <h1 className="font-sans font-medium text-[40px] md:text-[64px] leading-[1.07] text-bla">
+        <div className="px-6 md:px-[57px] pt-[32px] md:pt-[60px] pb-[24px] md:pb-[40px]">
+          <h1 className="font-sans font-medium text-[28px] md:text-[64px] leading-[1.07] text-bla">
             {data.title ? (
               <>
                 {data.label && <>{data.label}:{" "}</>}
@@ -81,29 +83,35 @@ export default async function OmMegPage() {
                 priority
               />
             </div>
+            {data.headerImageCaption && (
+              <p className="font-sans text-[13px] md:text-[20px] leading-[20px] md:leading-[28px] text-bla mt-2 md:mt-3">
+                {data.headerImageCaption}
+              </p>
+            )}
           </div>
         )}
       </header>
 
-      <section className="px-[176px] py-[106px]">
-        <div className="flex gap-[284px] items-start">
+      <ScrollReveal>
+      <section className="px-6 md:px-[176px] py-[60px] md:py-[106px]">
+        <div className="flex flex-col md:flex-row md:gap-[284px] md:items-start gap-8">
           {/* Left: serif section title */}
-          <h2 className="font-serif text-[50px] leading-normal text-bla w-[415px] shrink-0">
+          <h2 className="font-serif text-[36px] md:text-[50px] leading-normal text-bla md:w-[415px] shrink-0">
             {data.sectionTitle}
           </h2>
 
           {/* Right: content */}
-          <div className="flex flex-col gap-[53px] w-[677px]">
+          <div className="flex flex-col gap-[53px]">
           {/* Ingress */}
           {data.ingress && (
-            <div className="text-bla text-[30px] leading-[41px]">
+            <div className="text-bla text-[18px] md:text-[24px] leading-[1.5] md:leading-[34px]">
               <PortableTextRenderer value={data.ingress} />
             </div>
           )}
 
           {/* Brødtekst */}
           {data.brodtekst && (
-            <div className="text-bla text-[20px] leading-[28px]">
+            <div className="text-bla text-[16px] md:text-[20px] leading-[1.5] md:leading-[28px]">
               <PortableTextRenderer value={data.brodtekst} />
             </div>
           )}
@@ -114,7 +122,7 @@ export default async function OmMegPage() {
               {data.email && (
                 <a
                   href={`mailto:${data.email}`}
-                  className="text-bla text-[20px] leading-[32px] flex items-center gap-[8px] hover:opacity-70 transition-opacity"
+                  className="text-bla text-[16px] md:text-[20px] leading-[32px] flex items-center gap-[8px] hover:opacity-70 transition-opacity"
                 >
                   <svg aria-hidden="true" width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 1H19V15H1V1Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round"/>
@@ -126,7 +134,7 @@ export default async function OmMegPage() {
               {data.phone && (
                 <a
                   href={`tel:${data.phone.replace(/\s/g, "")}`}
-                  className="text-bla text-[20px] leading-[32px] flex items-center gap-[8px] hover:opacity-70 transition-opacity"
+                  className="text-bla text-[16px] md:text-[20px] leading-[32px] flex items-center gap-[8px] hover:opacity-70 transition-opacity"
                 >
                   <svg aria-hidden="true" width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3 1H13C13.6 1 14 1.4 14 2V18C14 18.6 13.6 19 13 19H3C2.4 19 2 18.6 2 18V2C2 1.4 2.4 1 3 1Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round"/>
@@ -145,10 +153,10 @@ export default async function OmMegPage() {
                 <Link
                   key={i}
                   href={btn.href ?? "#"}
-                  className={`${(buttonColors[btn.color ?? "gul"] ?? buttonColors.gul).join(" ")} text-[24px] px-[20px] py-[10px] rounded-full hover:bg-bla hover:text-lys-bla transition-colors inline-flex items-center gap-[9px]`}
+                  className={`${(buttonColors[btn.color ?? "gul"] ?? buttonColors.gul).join(" ")} text-[18px] px-[15px] py-[8px] rounded-full hover:bg-bla hover:text-lys-bla transition-colors inline-flex items-center gap-[9px]`}
                 >
                   {btn.label}
-                  <svg aria-hidden="true" width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg aria-hidden="true" width="14" height="10" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 6H17M12 1L17 6L12 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </Link>
@@ -158,28 +166,30 @@ export default async function OmMegPage() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Utdanning */}
       {data.utdanning && data.utdanning.length > 0 && (
-        <section className="px-[176px] pb-[60px]">
+        <ScrollReveal>
+        <section className="px-6 md:px-[176px] pb-[60px]">
           <hr className="border-t border-bla mb-[60px]" />
-          <div className="flex gap-[284px] items-start">
-            <h2 className="font-serif text-[40px] font-normal leading-none text-bla w-[415px] shrink-0">
+          <div className="flex flex-col md:flex-row md:gap-[284px] md:items-start gap-8">
+            <h2 className="font-serif text-[24px] md:text-[40px] font-normal leading-none text-bla md:w-[415px] shrink-0">
               Utdanning
             </h2>
-            <ul className="flex flex-col gap-[40px] w-[677px]">
+            <ul className="flex flex-col gap-[28px] md:gap-[40px]">
               {data.utdanning.map((item, i) => (
                 <li key={i} className="flex flex-col gap-[2px]">
-                  <p className="font-sans font-semibold text-[20px] leading-[28px] text-bla">
+                  <p className="font-sans font-semibold text-[16px] md:text-[20px] leading-[24px] md:leading-[28px] text-bla">
                     {item.grad}
                   </p>
                   {(item.institusjon || item.periode) && (
-                    <p className="font-sans text-[20px] leading-[28px] text-bla opacity-70">
+                    <p className="font-sans text-[15px] md:text-[20px] leading-[22px] md:leading-[28px] text-bla opacity-70">
                       {[item.institusjon, item.periode].filter(Boolean).join(" · ")}
                     </p>
                   )}
                   {item.notat && (
-                    <p className="font-sans text-[20px] leading-[28px] text-bla opacity-50">
+                    <p className="font-sans text-[14px] md:text-[20px] leading-[20px] md:leading-[28px] text-bla opacity-50">
                       {item.notat}
                     </p>
                   )}
@@ -188,24 +198,26 @@ export default async function OmMegPage() {
             </ul>
           </div>
         </section>
+        </ScrollReveal>
       )}
 
       {/* Anerkjennelse */}
       {data.anerkjennelse && data.anerkjennelse.length > 0 && (
-        <section className="px-[176px] pb-[60px]">
+        <ScrollReveal>
+        <section className="px-6 md:px-[176px] pb-[60px]">
           <hr className="border-t border-bla mb-[60px]" />
-          <div className="flex gap-[284px] items-start">
-            <h2 className="font-serif text-[40px] font-normal leading-none text-bla w-[415px] shrink-0">
+          <div className="flex flex-col md:flex-row md:gap-[284px] md:items-start gap-8">
+            <h2 className="font-serif text-[24px] md:text-[40px] font-normal leading-none text-bla md:w-[415px] shrink-0">
               Anerkjennelse
             </h2>
-            <ul className="flex flex-col gap-[40px] w-[677px]">
+            <ul className="flex flex-col gap-[28px] md:gap-[40px]">
               {data.anerkjennelse.map((item, i) => (
-                <li key={i} className="flex flex-col gap-[8px]">
-                  <p className="font-sans font-medium text-[24px] leading-[32px] text-bla">
+                <li key={i} className="flex flex-col gap-[4px] md:gap-[8px]">
+                  <p className="font-sans font-medium text-[16px] md:text-[24px] leading-[24px] md:leading-[32px] text-bla">
                     {item.tittel}
                   </p>
                   {item.beskrivelse && (
-                    <p className="font-sans text-[20px] leading-[28px] text-bla opacity-70">
+                    <p className="font-sans text-[15px] md:text-[20px] leading-[22px] md:leading-[28px] text-bla opacity-70">
                       {item.beskrivelse}
                     </p>
                   )}
@@ -214,13 +226,16 @@ export default async function OmMegPage() {
             </ul>
           </div>
         </section>
+        </ScrollReveal>
       )}
 
       {/* Kurs */}
       {data.kurs && data.kurs.length > 0 && (
-        <section className="px-[176px]">
+        <ScrollReveal>
+        <section className="px-6 md:px-[176px]">
           <KursAccordion kurs={data.kurs} />
         </section>
+        </ScrollReveal>
       )}
     </>
   );

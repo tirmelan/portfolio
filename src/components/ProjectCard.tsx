@@ -62,20 +62,20 @@ export default function ProjectCard({
       <hr className="border-t border-bla" />
 
       {/* Title + tags row */}
-      <div className="flex items-center justify-between gap-6 py-[14px]">
-        <p className="font-sans font-medium text-[30px] leading-[50px] text-bla shrink-0">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-6 py-[14px]">
+        <p className="font-sans font-medium text-[20px] leading-[28px] md:text-[30px] md:leading-[50px] text-bla">
           {clientName}:{" "}
           <em className="font-serif italic font-normal">{title}</em>
         </p>
 
         {tags && tags.length > 0 && (
-          <div className="flex flex-wrap gap-[15px] justify-end">
+          <div className="hidden md:flex flex-wrap gap-[8px] md:gap-[15px] md:justify-end md:shrink-0">
             {tags.map((tag) => {
               const [bg, text] = tagColorMap[tag.color] ?? ["bg-lys-bla", "text-bla"];
               return (
                 <span
                   key={tag._id}
-                  className={`${bg} ${text} font-sans text-[20px] leading-normal px-[15px] py-[3px] rounded-full whitespace-nowrap`}
+                  className={`${bg} ${text} font-sans text-[14px] md:text-[20px] leading-normal px-[10px] md:px-[15px] py-[3px] rounded-full whitespace-nowrap`}
                 >
                   {tag.name}
                 </span>

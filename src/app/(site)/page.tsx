@@ -32,40 +32,40 @@ export default async function HomePage() {
 
   return (
     <>
-      <section id="top" className="bg-lys-bla flex flex-col items-center justify-center px-6 py-[101px] min-h-[762px]">
-        <div className="flex flex-col items-center gap-[41px] w-full max-w-[1095px]">
-          <h1 className="text-bla text-[clamp(2.7rem,6.3vw,5.75rem)] font-semibold leading-[1.25] text-center">
+      <section id="top" className="bg-lys-bla flex flex-col items-center justify-center px-6 pt-[40px] pb-[60px] md:pt-[60px] md:pb-[160px] md:min-h-[762px]">
+        <div className="flex flex-col items-center gap-[24px] md:gap-[41px] w-full max-w-[1095px]">
+          <h1 className="text-bla text-[2rem] md:text-[clamp(2.7rem,6.3vw,5.75rem)] font-semibold leading-[1.25] text-center">
             {data.title}
           </h1>
           {data.ingress && (
-            <div className="text-bla text-[27px] leading-[normal] text-center max-w-[839px]">
+            <div className="text-bla text-[17px] md:text-[30px] leading-[normal] text-center max-w-[839px]">
               <PortableTextRenderer value={data.ingress} />
             </div>
           )}
+          {data.ctaButtons && data.ctaButtons.length > 0 && (
+            <div className="flex flex-wrap justify-center gap-[12px] md:gap-[24px] items-center">
+              {data.ctaButtons.map(
+                (btn: { label: string; href: string; color?: string }, i: number) => (
+                  <Link
+                    key={i}
+                    href={btn.href ?? "#"}
+                    className={`${(buttonColors[btn.color ?? "gul"] ?? buttonColors.gul).join(" ")} text-[16px] md:text-[22px] px-[16px] md:px-[20px] py-[8px] md:py-[10px] rounded-full hover:bg-bla hover:text-lys-bla transition-colors inline-flex items-center gap-[8px] md:gap-[9px]`}
+                  >
+                    {btn.label}
+                    <svg aria-hidden="true" width="14" height="10" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1 6H17M12 1L17 6L12 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </Link>
+                )
+              )}
+            </div>
+          )}
         </div>
-        {data.ctaButtons && data.ctaButtons.length > 0 && (
-          <div className="flex gap-[24px] items-center mt-[40px]">
-            {data.ctaButtons.map(
-              (btn: { label: string; href: string; color?: string }, i: number) => (
-                <Link
-                  key={i}
-                  href={btn.href ?? "#"}
-                  className={`${(buttonColors[btn.color ?? "gul"] ?? buttonColors.gul).join(" ")} text-[22px] px-[20px] py-[10px] rounded-full hover:bg-bla hover:text-lys-bla transition-colors inline-flex items-center gap-[9px]`}
-                >
-                  {btn.label}
-                  <svg aria-hidden="true" width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 6H17M12 1L17 6L12 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </Link>
-              )
-            )}
-          </div>
-        )}
       </section>
 
       {/* Featured projects */}
       {data.featuredProjects && data.featuredProjects.length > 0 && (
-        <section className="flex flex-col px-[62px]">
+        <section id="prosjekter" className="flex flex-col px-4 md:px-[62px]">
           {data.featuredProjects.filter((p: { _id: string }, i: number, arr: { _id: string }[]) => arr.findIndex(x => x._id === p._id) === i).map(
             (project: {
               _id: string;
