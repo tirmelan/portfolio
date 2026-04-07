@@ -3,11 +3,9 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Tiril Meland",
-  description: "Meland design er Tiril Johnslien Melands designstudio. Her finner du et utvalg av prosjekter innen visuell identitet, grafisk design og UX.",
   metadataBase: new URL("https://tirilmeland.no"),
   openGraph: {
     title: "Tiril Meland",
-    description: "Meland design er Tiril Johnslien Melands designstudio. Her finner du et utvalg av prosjekter innen visuell identitet, grafisk design og UX.",
     url: "https://tirilmeland.no",
     siteName: "Meland design",
     locale: "nb_NO",
