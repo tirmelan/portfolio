@@ -6,12 +6,13 @@ export default function Footer() {
     <footer className="bg-lys-bla px-4 md:px-[62px] py-[40px]">
       <div className="border-t border-bla pt-[40px]">
         <div className="flex flex-row items-start justify-between md:items-center gap-4 md:gap-8">
-          {/* Logo — venstre på mobil, skjult på desktop */}
-          <Link href="/" className="hover:opacity-80 transition-opacity md:hidden shrink-0 mt-[2px]">
-            <Image src="/logo.svg" alt="Meland design logo" width={36} height={36} />
+          {/* Logo — venstre på både mobil og desktop */}
+          <Link href="/" className="hover:opacity-80 transition-opacity shrink-0 mt-[2px] md:mt-0">
+            <Image src="/logo.svg" alt="Meland design logo" width={36} height={36} className="md:hidden" />
+            <Image src="/logo.svg" alt="Meland design logo" width={70} height={70} className="hidden md:block" />
           </Link>
 
-          <div className="flex flex-row w-full md:w-auto justify-end gap-[32px] md:justify-start md:gap-[40px]">
+          <div className="flex flex-row w-full md:w-auto justify-end gap-[32px] md:justify-end md:gap-[40px]">
             {/* Hopp til... */}
             <div className="flex flex-col">
               <p className="font-serif text-bla text-[10px] md:text-[17px] leading-[16px] md:leading-[25px] mb-[2px]">
@@ -72,10 +73,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Logo — høyre på desktop */}
-          <Link href="/" className="hover:opacity-80 transition-opacity hidden md:block shrink-0">
-            <Image src="/logo.svg" alt="Meland design logo" width={70} height={70} />
-          </Link>
+
         </div>
       </div>
     </footer>
