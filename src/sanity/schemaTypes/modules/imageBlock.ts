@@ -13,6 +13,7 @@ export const imageBlockType = defineType({
         list: [
           { title: "Hovedbilde", value: "hovedbilde" },
           { title: "To kvadratiske bilder", value: "toKvadratiske" },
+          { title: "To kvadratiske bilder (smal)", value: "toKvadratiskeSmal" },
           { title: "Tre kvadratiske bilder", value: "treKvadratiske" },
           { title: "Kvadrat og rektangel", value: "kvadratRektangel" },
           { title: "To rektangulære bilder", value: "toRektangulare" },
@@ -112,6 +113,7 @@ export const imageBlockType = defineType({
       const titles: Record<string, string> = {
         hovedbilde: "Hovedbilde",
         toKvadratiske: "To kvadratiske bilder",
+        toKvadratiskeSmal: "To kvadratiske bilder (smal)",
         treKvadratiske: "Tre kvadratiske bilder",
         kvadratRektangel: "Kvadrat og rektangel",
         toRektangulare: "To rektangulære bilder",

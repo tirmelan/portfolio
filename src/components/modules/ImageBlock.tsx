@@ -38,6 +38,7 @@ export default function ImageBlock({
   position = "venstre",
   image,
   alt,
+  caption,
   images,
   imageLeft,
   altLeft,
@@ -57,6 +58,11 @@ export default function ImageBlock({
             className="object-cover"
           />
         </div>
+        {caption && (
+          <p className="font-sans text-[13px] md:text-[16px] leading-[18px] md:leading-[22px] text-bla mt-3">
+            {caption}
+          </p>
+        )}
       </section>
     );
   }
@@ -77,14 +83,48 @@ export default function ImageBlock({
       <section className="px-6 md:px-[62px] py-[15px]">
         <div className="flex flex-col md:flex-row gap-[30px]">
           {imageList.slice(0, 2).map((item, i) => (
-            <div key={i} className="relative w-full md:w-1/2 aspect-square">
-              <Image
-                src={urlFor(item.image).url()}
-                alt={item.alt || ""}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
-              />
+            <div key={i} className="w-full md:w-1/2">
+              <div className="relative aspect-square">
+                <Image
+                  src={urlFor(item.image).url()}
+                  alt={item.alt || ""}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+              {item.caption && (
+                <p className="font-sans text-[13px] md:text-[16px] leading-[18px] md:leading-[22px] text-bla mt-3">
+                  {item.caption}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+  }
+
+  if (layout === "toKvadratiskeSmal") {
+    return (
+      <section className="px-6 md:px-[176px] py-[15px]">
+        <div className="flex flex-col md:flex-row gap-[30px]">
+          {imageList.slice(0, 2).map((item, i) => (
+            <div key={i} className="w-full md:w-1/2">
+              <div className="relative aspect-square">
+                <Image
+                  src={urlFor(item.image).url()}
+                  alt={item.alt || ""}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+              {item.caption && (
+                <p className="font-sans text-[13px] md:text-[16px] leading-[18px] md:leading-[22px] text-bla mt-3">
+                  {item.caption}
+                </p>
+              )}
             </div>
           ))}
         </div>
@@ -97,14 +137,21 @@ export default function ImageBlock({
       <section className="px-6 md:px-[62px] py-[15px]">
         <div className="flex flex-col md:flex-row gap-[30px]">
           {imageList.slice(0, 3).map((item, i) => (
-            <div key={i} className="relative w-full md:w-1/3 aspect-square">
-              <Image
-                src={urlFor(item.image).url()}
-                alt={item.alt || ""}
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover"
-              />
+            <div key={i} className="w-full md:w-1/3">
+              <div className="relative aspect-square">
+                <Image
+                  src={urlFor(item.image).url()}
+                  alt={item.alt || ""}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+              {item.caption && (
+                <p className="font-sans text-[13px] md:text-[16px] leading-[18px] md:leading-[22px] text-bla mt-3">
+                  {item.caption}
+                </p>
+              )}
             </div>
           ))}
         </div>
@@ -117,14 +164,21 @@ export default function ImageBlock({
       <section className="px-6 md:px-[62px] py-[15px]">
         <div className="flex flex-col md:flex-row gap-[30px]">
           {imageList.slice(0, 3).map((item, i) => (
-            <div key={i} className="relative w-full md:w-1/3 aspect-[790/517]">
-              <Image
-                src={urlFor(item.image).url()}
-                alt={item.alt || ""}
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover"
-              />
+            <div key={i} className="w-full md:w-1/3">
+              <div className="relative aspect-[790/517]">
+                <Image
+                  src={urlFor(item.image).url()}
+                  alt={item.alt || ""}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+              {item.caption && (
+                <p className="font-sans text-[13px] md:text-[16px] leading-[18px] md:leading-[22px] text-bla mt-3">
+                  {item.caption}
+                </p>
+              )}
             </div>
           ))}
         </div>
@@ -138,26 +192,40 @@ export default function ImageBlock({
     if (!square && !rect) return null;
 
     const squareEl = square && (
-      <div className="relative w-full md:w-1/2 aspect-square">
-        <Image
-          src={urlFor(square.image).url()}
-          alt={square.alt || ""}
-          fill
-          sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover"
-        />
+      <div className="w-full md:w-1/2">
+        <div className="relative aspect-square">
+          <Image
+            src={urlFor(square.image).url()}
+            alt={square.alt || ""}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
+          />
+        </div>
+        {square.caption && (
+          <p className="font-sans text-[13px] md:text-[16px] leading-[18px] md:leading-[22px] text-bla mt-3">
+            {square.caption}
+          </p>
+        )}
       </div>
     );
 
     const rectEl = rect && (
-      <div className="relative w-full md:w-1/2 aspect-[790/517]">
-        <Image
-          src={urlFor(rect.image).url()}
-          alt={rect.alt || ""}
-          fill
-          sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover"
-        />
+      <div className="w-full md:w-1/2">
+        <div className="relative aspect-[790/517]">
+          <Image
+            src={urlFor(rect.image).url()}
+            alt={rect.alt || ""}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
+          />
+        </div>
+        {rect.caption && (
+          <p className="font-sans text-[13px] md:text-[16px] leading-[18px] md:leading-[22px] text-bla mt-3">
+            {rect.caption}
+          </p>
+        )}
       </div>
     );
 
@@ -179,14 +247,21 @@ export default function ImageBlock({
       <section className="px-6 md:px-[62px] py-[15px]">
         <div className="flex flex-col md:flex-row gap-[30px]">
           {imageList.slice(0, 2).map((item, i) => (
-            <div key={i} className="relative w-full md:w-1/2 aspect-[790/517]">
-              <Image
-                src={urlFor(item.image).url()}
-                alt={item.alt || ""}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
-              />
+            <div key={i} className="w-full md:w-1/2">
+              <div className="relative aspect-[790/517]">
+                <Image
+                  src={urlFor(item.image).url()}
+                  alt={item.alt || ""}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+              {item.caption && (
+                <p className="font-sans text-[13px] md:text-[16px] leading-[18px] md:leading-[22px] text-bla mt-3">
+                  {item.caption}
+                </p>
+              )}
             </div>
           ))}
         </div>
@@ -201,39 +276,60 @@ export default function ImageBlock({
     if (!big && !small1 && !small2) return null;
 
     const bigEl = big && (
-      <div className="relative w-full md:w-1/2 aspect-[790/1035]">
-        <Image
-          src={urlFor(big.image).url()}
-          alt={big.alt || ""}
-          fill
-          sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover"
-        />
+      <div className="w-full md:w-1/2">
+        <div className="relative aspect-[790/1035]">
+          <Image
+            src={urlFor(big.image).url()}
+            alt={big.alt || ""}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
+          />
+        </div>
+        {big.caption && (
+          <p className="font-sans text-[13px] md:text-[16px] leading-[18px] md:leading-[22px] text-bla mt-3">
+            {big.caption}
+          </p>
+        )}
       </div>
     );
 
     const smallEls = (
       <div className="flex flex-col gap-[30px] w-full md:w-1/2">
         {small1 && (
-          <div className="relative w-full aspect-[790/502]">
-            <Image
-              src={urlFor(small1.image).url()}
-              alt={small1.alt || ""}
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
-            />
+          <div>
+            <div className="relative w-full aspect-[790/502]">
+              <Image
+                src={urlFor(small1.image).url()}
+                alt={small1.alt || ""}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+            {small1.caption && (
+              <p className="font-sans text-[13px] md:text-[16px] leading-[18px] md:leading-[22px] text-bla mt-3">
+                {small1.caption}
+              </p>
+            )}
           </div>
         )}
         {small2 && (
-          <div className="relative w-full aspect-[790/502]">
-            <Image
-              src={urlFor(small2.image).url()}
-              alt={small2.alt || ""}
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
-            />
+          <div>
+            <div className="relative w-full aspect-[790/502]">
+              <Image
+                src={urlFor(small2.image).url()}
+                alt={small2.alt || ""}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+            {small2.caption && (
+              <p className="font-sans text-[13px] md:text-[16px] leading-[18px] md:leading-[22px] text-bla mt-3">
+                {small2.caption}
+              </p>
+            )}
           </div>
         )}
       </div>
@@ -257,14 +353,21 @@ export default function ImageBlock({
       <section className="px-6 md:px-[62px] py-[15px]">
         <div className="flex flex-col md:flex-row gap-[25px]">
           {imageList.slice(0, 4).map((item, i) => (
-            <div key={i} className="relative w-full md:w-1/4 aspect-square">
-              <Image
-                src={urlFor(item.image).url()}
-                alt={item.alt || ""}
-                fill
-                sizes="(max-width: 768px) 100vw, 25vw"
-                className="object-cover"
-              />
+            <div key={i} className="w-full md:w-1/4">
+              <div className="relative aspect-square">
+                <Image
+                  src={urlFor(item.image).url()}
+                  alt={item.alt || ""}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                  className="object-cover"
+                />
+              </div>
+              {item.caption && (
+                <p className="font-sans text-[13px] md:text-[16px] leading-[18px] md:leading-[22px] text-bla mt-3">
+                  {item.caption}
+                </p>
+              )}
             </div>
           ))}
         </div>
@@ -280,14 +383,21 @@ export default function ImageBlock({
           {rows.map((row, ri) => (
             <div key={ri} className="flex flex-col md:flex-row gap-[30px]">
               {row.map((item, ci) => (
-                <div key={ci} className="relative w-full md:w-1/2 aspect-[790/517]">
-                  <Image
-                    src={urlFor(item.image).url()}
-                    alt={item.alt || ""}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover"
-                  />
+                <div key={ci} className="w-full md:w-1/2">
+                  <div className="relative aspect-[790/517]">
+                    <Image
+                      src={urlFor(item.image).url()}
+                      alt={item.alt || ""}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  {item.caption && (
+                    <p className="font-sans text-[13px] md:text-[16px] leading-[18px] md:leading-[22px] text-bla mt-3">
+                      {item.caption}
+                    </p>
+                  )}
                 </div>
               ))}
             </div>
@@ -302,14 +412,21 @@ export default function ImageBlock({
       <section className="px-6 md:px-[62px] py-[15px]">
         <div className="flex flex-col md:flex-row gap-[30px]">
           {imageList.slice(0, 2).map((item, i) => (
-            <div key={i} className="relative w-full md:w-1/2 aspect-[790/1035]">
-              <Image
-                src={urlFor(item.image).url()}
-                alt={item.alt || ""}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
-              />
+            <div key={i} className="w-full md:w-1/2">
+              <div className="relative aspect-[790/1035]">
+                <Image
+                  src={urlFor(item.image).url()}
+                  alt={item.alt || ""}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+              {item.caption && (
+                <p className="font-sans text-[13px] md:text-[16px] leading-[18px] md:leading-[22px] text-bla mt-3">
+                  {item.caption}
+                </p>
+              )}
             </div>
           ))}
         </div>
@@ -329,14 +446,21 @@ export default function ImageBlock({
           {rows.map((row, ri) => (
             <div key={ri} className="flex flex-col md:flex-row gap-[25px]">
               {row.map((item, ci) => (
-                <div key={ci} className="relative w-full md:w-1/3 aspect-square">
-                  <Image
-                    src={urlFor(item.image).url()}
-                    alt={item.alt || ""}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover"
-                  />
+                <div key={ci} className="w-full md:w-1/3">
+                  <div className="relative aspect-square">
+                    <Image
+                      src={urlFor(item.image).url()}
+                      alt={item.alt || ""}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  {item.caption && (
+                    <p className="font-sans text-[13px] md:text-[16px] leading-[18px] md:leading-[22px] text-bla mt-3">
+                      {item.caption}
+                    </p>
+                  )}
                 </div>
               ))}
             </div>
