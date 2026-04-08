@@ -13,6 +13,7 @@ interface ImageItem {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   image: any;
   alt?: string;
+  caption?: string;
 }
 
 interface ImageBlockProps {
@@ -21,6 +22,7 @@ interface ImageBlockProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   image?: any;
   alt?: string;
+  caption?: string;
   images?: ImageItem[];
   // legacy fields
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -96,6 +98,26 @@ export default function ImageBlock({
         <div className="flex flex-col md:flex-row gap-[30px]">
           {imageList.slice(0, 3).map((item, i) => (
             <div key={i} className="relative w-full md:w-1/3 aspect-square">
+              <Image
+                src={urlFor(item.image).url()}
+                alt={item.alt || ""}
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+  }
+
+  if (layout === "treRektangulare") {
+    return (
+      <section className="px-6 md:px-[62px] py-[15px]">
+        <div className="flex flex-col md:flex-row gap-[30px]">
+          {imageList.slice(0, 3).map((item, i) => (
+            <div key={i} className="relative w-full md:w-1/3 aspect-[790/517]">
               <Image
                 src={urlFor(item.image).url()}
                 alt={item.alt || ""}

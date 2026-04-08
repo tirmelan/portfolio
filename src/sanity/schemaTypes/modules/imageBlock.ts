@@ -16,6 +16,7 @@ export const imageBlockType = defineType({
           { title: "Tre kvadratiske bilder", value: "treKvadratiske" },
           { title: "Kvadrat og rektangel", value: "kvadratRektangel" },
           { title: "To rektangulære bilder", value: "toRektangulare" },
+          { title: "Tre rektangulære bilder", value: "treRektangulare" },
           { title: "Stor og liten (tre bilder grid)", value: "storOgLiten" },
           { title: "Fire i rekke", value: "fireIRekke" },
           { title: "2×2 rutenett (fire bilder)", value: "toGangerTo" },
@@ -63,6 +64,12 @@ export const imageBlockType = defineType({
       hidden: ({ parent }) => parent?.layout !== "hovedbilde",
     }),
     defineField({
+      name: "caption",
+      title: "Bildetekst",
+      type: "string",
+      hidden: ({ parent }) => parent?.layout !== "hovedbilde",
+    }),
+    defineField({
       name: "images",
       title: "Bilder",
       type: "array",
@@ -80,6 +87,11 @@ export const imageBlockType = defineType({
             defineField({
               name: "alt",
               title: "Alternativ tekst",
+              type: "string",
+            }),
+            defineField({
+              name: "caption",
+              title: "Bildetekst",
               type: "string",
             }),
           ],
@@ -103,6 +115,7 @@ export const imageBlockType = defineType({
         treKvadratiske: "Tre kvadratiske bilder",
         kvadratRektangel: "Kvadrat og rektangel",
         toRektangulare: "To rektangulære bilder",
+        treRektangulare: "Tre rektangulære bilder",
         storOgLiten: "Stor og liten (tre bilder grid)",
         fireIRekke: "Fire i rekke",
         toGangerTo: "2×2 rutenett (fire bilder)",
