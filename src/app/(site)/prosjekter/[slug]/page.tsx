@@ -42,6 +42,7 @@ function SectionRenderer({ sections }: { sections: any[] }) {
                   position={section.position}
                   image={section.image}
                   alt={section.alt}
+                  caption={section.caption}
                   images={section.images}
                   imageLeft={section.imageLeft}
                   altLeft={section.altLeft}
