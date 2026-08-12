@@ -20,11 +20,11 @@ function KursEntry({ item }: { item: Kurs }) {
 
   return (
     <li className="flex flex-col">
-      <p className="font-sans font-medium text-[16px] md:text-[22px] leading-[24px] md:leading-[32px] text-bla">
+      <p className="font-sans font-semibold text-[16px] md:text-[20px] leading-[24px] md:leading-[28px] text-bla">
         {item.tittel}
       </p>
       {(meta || varighet) && (
-        <p className="font-sans text-[15px] md:text-[22px] leading-[22px] md:leading-[32px] text-bla opacity-70">
+        <p className="font-sans text-[15px] md:text-[20px] leading-[22px] md:leading-[28px] text-bla opacity-70">
           {meta && <em className="font-serif italic not-italic" style={{ fontFamily: "plantin, serif", fontStyle: "italic" }}>{item.leverandor}</em>}
           {meta && item.ar && <span> - {item.ar}</span>}
           {varighet && <span>{meta ? " | " : ""}{varighet}</span>}

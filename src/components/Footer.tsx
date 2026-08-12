@@ -30,7 +30,7 @@ export default function Footer() {
             </div>
 
             {/* Kontakt */}
-            <div className="flex flex-col md:w-[195px]">
+            <div className="flex flex-col">
               <p className="font-serif text-bla text-[10px] md:text-[17px] leading-[16px] md:leading-[25px] mb-[2px]">
                 Kontakt
               </p>
@@ -50,7 +50,7 @@ export default function Footer() {
             </div>
 
             {/* Sosialt */}
-            <div className="flex flex-col md:w-[156px]">
+            <div className="flex flex-col">
               <p className="font-serif text-bla text-[10px] md:text-[17px] leading-[16px] md:leading-[25px] mb-[2px]">
                 Sosialt
               </p>
