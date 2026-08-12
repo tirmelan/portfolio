@@ -213,7 +213,7 @@ export default async function OmMegPage() {
             <ul className="flex flex-col gap-[28px] md:gap-[40px]">
               {data.anerkjennelse.map((item, i) => (
                 <li key={i} className="flex flex-col gap-[4px] md:gap-[8px]">
-                  <p className="font-sans font-medium text-[16px] md:text-[24px] leading-[24px] md:leading-[32px] text-bla">
+                  <p className="font-sans font-semibold text-[16px] md:text-[20px] leading-[24px] md:leading-[28px] text-bla">
                     {item.tittel}
                   </p>
                   {item.beskrivelse && (
