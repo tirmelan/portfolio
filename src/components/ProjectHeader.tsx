@@ -44,7 +44,7 @@ export default function ProjectHeader({
   return (
     <header>
       {/* Text + tags */}
-      <div className="px-6 md:px-[57px] pt-[32px] md:pt-[60px] pb-[24px] md:pb-[56px] flex flex-col gap-4 md:gap-6">
+      <div className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px] pt-[32px] md:pt-[60px] pb-[24px] md:pb-[56px] flex flex-col gap-4 md:gap-6">
         {/* Title line */}
         <h1 className="font-sans font-medium text-[28px] md:text-[64px] leading-[1.07] text-bla">
           {clientName}:{" "}
@@ -71,7 +71,7 @@ export default function ProjectHeader({
 
       {/* Hero image */}
       {headerImage && (
-        <div className="px-6 md:px-[62px]">
+        <div className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px]">
           <div className="relative w-full aspect-[1610/943]">
             <Image
               src={urlFor(headerImage).url()}

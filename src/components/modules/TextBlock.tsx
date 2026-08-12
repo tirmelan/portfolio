@@ -58,7 +58,7 @@ interface TextBlockProps {
 
 export default function TextBlock({ title, body, size = "stor" }: TextBlockProps) {
   return (
-    <section className="px-6 md:px-[176px] py-[60px] md:py-[106px]">
+    <section className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px] py-[60px] md:py-[106px]">
       <div className="flex flex-col gap-10 md:flex-row md:gap-[284px] text-bla">
         {title && (
           <h2 className={`font-serif ${titleSize[size]} font-normal leading-[1.2] shrink-0 md:w-[415px]`}>

@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 export default function Navbar() {
   const pathname = usePathname();
   return (
-    <nav className="bg-lys-bla px-4 md:px-[60px] py-4 md:py-[39px]">
+    <nav className="bg-lys-bla px-4 md:px-[62px] lg:px-[70px] xl:px-[70px] py-4 md:py-[39px]">
       <div className="flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
           <Image src="/logo.svg" alt="Meland design logo" width={62} height={62} loading="eager" />

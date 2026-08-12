@@ -21,7 +21,7 @@ export default function ContactFormProposal() {
 
   if (status === "sent") {
     return (
-      <section className="px-6 md:px-[176px] py-[80px] md:py-[160px] flex flex-col items-center text-center gap-[24px]">
+      <section className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px] py-[80px] md:py-[160px] flex flex-col items-center text-center gap-[24px]">
         <p className="font-serif text-[40px] md:text-[64px] leading-[1.1] text-bla">
           Takk for meldingen!
         </p>
@@ -39,12 +39,12 @@ export default function ContactFormProposal() {
   }
 
   return (
-    <section className="px-6 md:px-[176px] py-[60px] md:py-[106px]">
+    <section className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px] py-[60px] md:py-[106px]">
       <div className="flex flex-col md:flex-row md:gap-[284px] md:items-start gap-12">
 
         {/* Left: serif intro + contact info */}
         <div className="flex flex-col gap-[40px] md:w-[415px] shrink-0">
-          <h2 className="font-serif text-[34px] md:text-[50px] leading-[1.15] text-bla">
+          <h2 className="font-sans font-medium text-[34px] md:text-[50px] leading-[1.15] text-bla">
             La oss komme i kontakt
           </h2>
           <p className="font-sans text-bla text-[20px] leading-[30px]">

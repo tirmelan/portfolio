@@ -51,7 +51,7 @@ export default function ProjectIntro({
   if (!ingress && !hasInfo) return null;
 
   return (
-    <section className="px-6 md:px-[176px] py-[48px] md:py-[106px]">
+    <section className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px] py-[48px] md:py-[106px]">
       <div className="flex flex-col md:flex-row md:justify-between gap-8 md:gap-12 text-bla">
         {/* Ingress */}
         {ingress && (

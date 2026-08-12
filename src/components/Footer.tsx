@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-lys-bla px-4 md:px-[62px] py-[40px]">
+    <footer className="bg-lys-bla px-4 md:px-[62px] lg:px-[70px] xl:px-[70px] py-[40px]">
       <div className="border-t border-bla pt-[40px]">
         <div className="flex flex-row items-start justify-between md:items-center gap-4 md:gap-8">
           {/* Logo — venstre på både mobil og desktop */}

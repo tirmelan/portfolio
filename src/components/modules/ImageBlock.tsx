@@ -48,7 +48,7 @@ export default function ImageBlock({
   if (layout === "hovedbilde") {
     if (!image) return null;
     return (
-      <section className="px-6 md:px-[62px] py-[15px]">
+      <section className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px] py-[15px]">
         <div className="relative w-full aspect-[1610/943]">
           <Image
             src={urlFor(image).url()}
@@ -80,7 +80,7 @@ export default function ImageBlock({
 
   if (layout === "toKvadratiske") {
     return (
-      <section className="px-6 md:px-[62px] py-[15px]">
+      <section className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px] py-[15px]">
         <div className="flex flex-col md:flex-row gap-[30px]">
           {imageList.slice(0, 2).map((item, i) => (
             <div key={i} className="w-full md:w-1/2">
@@ -107,7 +107,7 @@ export default function ImageBlock({
 
   if (layout === "toKvadratiskeSmal") {
     return (
-      <section className="px-6 md:px-[176px] py-[15px]">
+      <section className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px] py-[15px]">
         <div className="flex flex-col md:flex-row gap-[30px]">
           {imageList.slice(0, 2).map((item, i) => (
             <div key={i} className="w-full md:w-1/2">
@@ -134,7 +134,7 @@ export default function ImageBlock({
 
   if (layout === "treKvadratiske") {
     return (
-      <section className="px-6 md:px-[62px] py-[15px]">
+      <section className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px] py-[15px]">
         <div className="flex flex-col md:flex-row gap-[30px]">
           {imageList.slice(0, 3).map((item, i) => (
             <div key={i} className="w-full md:w-1/3">
@@ -161,7 +161,7 @@ export default function ImageBlock({
 
   if (layout === "treRektangulare") {
     return (
-      <section className="px-6 md:px-[62px] py-[15px]">
+      <section className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px] py-[15px]">
         <div className="flex flex-col md:flex-row gap-[30px]">
           {imageList.slice(0, 3).map((item, i) => (
             <div key={i} className="w-full md:w-1/3">
@@ -230,7 +230,7 @@ export default function ImageBlock({
     );
 
     return (
-      <section className="px-6 md:px-[62px] py-[15px]">
+      <section className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px] py-[15px]">
         <div className="flex flex-col md:flex-row gap-[30px] items-end">
           {position === "venstre" ? (
             <>{squareEl}{rectEl}</>
@@ -244,7 +244,7 @@ export default function ImageBlock({
 
   if (layout === "toRektangulare") {
     return (
-      <section className="px-6 md:px-[62px] py-[15px]">
+      <section className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px] py-[15px]">
         <div className="flex flex-col md:flex-row gap-[30px]">
           {imageList.slice(0, 2).map((item, i) => (
             <div key={i} className="w-full md:w-1/2">
@@ -336,7 +336,7 @@ export default function ImageBlock({
     );
 
     return (
-      <section className="px-6 md:px-[62px] py-[15px]">
+      <section className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px] py-[15px]">
         <div className="flex flex-col md:flex-row gap-[30px]">
           {position === "venstre" ? (
             <>{bigEl}{smallEls}</>
@@ -350,7 +350,7 @@ export default function ImageBlock({
 
   if (layout === "fireIRekke") {
     return (
-      <section className="px-6 md:px-[62px] py-[15px]">
+      <section className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px] py-[15px]">
         <div className="flex flex-col md:flex-row gap-[25px]">
           {imageList.slice(0, 4).map((item, i) => (
             <div key={i} className="w-full md:w-1/4">
@@ -378,7 +378,7 @@ export default function ImageBlock({
   if (layout === "toGangerTo") {
     const rows = [imageList.slice(0, 2), imageList.slice(2, 4)];
     return (
-      <section className="px-6 md:px-[62px] py-[15px]">
+      <section className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px] py-[15px]">
         <div className="flex flex-col gap-[30px]">
           {rows.map((row, ri) => (
             <div key={ri} className="flex flex-col md:flex-row gap-[30px]">
@@ -409,7 +409,7 @@ export default function ImageBlock({
 
   if (layout === "toHoye") {
     return (
-      <section className="px-6 md:px-[62px] py-[15px]">
+      <section className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px] py-[15px]">
         <div className="flex flex-col md:flex-row gap-[30px]">
           {imageList.slice(0, 2).map((item, i) => (
             <div key={i} className="w-full md:w-1/2">
@@ -441,7 +441,7 @@ export default function ImageBlock({
       imageList.slice(6, 9),
     ];
     return (
-      <section className="px-6 md:px-[62px] py-[15px]">
+      <section className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px] py-[15px]">
         <div className="flex flex-col gap-[25px]">
           {rows.map((row, ri) => (
             <div key={ri} className="flex flex-col md:flex-row gap-[25px]">

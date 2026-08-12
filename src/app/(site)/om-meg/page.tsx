@@ -60,7 +60,7 @@ export default async function OmMegPage() {
   return (
     <>
       <header>
-        <div className="px-6 md:px-[57px] pt-[32px] md:pt-[60px] pb-[24px] md:pb-[40px]">
+        <div className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px] pt-[32px] md:pt-[60px] pb-[24px] md:pb-[40px]">
           <h1 className="font-sans font-medium text-[28px] md:text-[64px] leading-[1.07] text-bla">
             {data.title ? (
               <>
@@ -73,7 +73,7 @@ export default async function OmMegPage() {
           </h1>
         </div>
         {data.headerImage && (
-          <div className="px-6 md:px-[62px]">
+          <div className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px]">
             <div className="relative w-full aspect-[1610/943]">
               <Image
                 src={urlFor(data.headerImage).url()}
@@ -93,7 +93,7 @@ export default async function OmMegPage() {
       </header>
 
       <ScrollReveal>
-      <section className="px-6 md:px-[176px] py-[60px] md:py-[106px]">
+      <section className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px] py-[60px] md:py-[106px]">
         <div className="flex flex-col md:flex-row md:gap-[284px] md:items-start gap-8">
           {/* Left: serif section title */}
           <h2 className="font-serif text-[36px] md:text-[50px] leading-normal text-bla md:w-[415px] shrink-0">
@@ -171,7 +171,7 @@ export default async function OmMegPage() {
       {/* Utdanning */}
       {data.utdanning && data.utdanning.length > 0 && (
         <ScrollReveal>
-        <section className="px-6 md:px-[176px] pb-[60px]">
+        <section className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px] pb-[60px]">
           <hr className="border-t border-bla mb-[60px]" />
           <div className="flex flex-col md:flex-row md:gap-[284px] md:items-start gap-8">
             <h2 className="font-serif text-[24px] md:text-[40px] font-normal leading-none text-bla md:w-[415px] shrink-0">
@@ -204,7 +204,7 @@ export default async function OmMegPage() {
       {/* Anerkjennelse */}
       {data.anerkjennelse && data.anerkjennelse.length > 0 && (
         <ScrollReveal>
-        <section className="px-6 md:px-[176px] pb-[60px]">
+        <section className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px] pb-[60px]">
           <hr className="border-t border-bla mb-[60px]" />
           <div className="flex flex-col md:flex-row md:gap-[284px] md:items-start gap-8">
             <h2 className="font-serif text-[24px] md:text-[40px] font-normal leading-none text-bla md:w-[415px] shrink-0">
@@ -232,7 +232,7 @@ export default async function OmMegPage() {
       {/* Kurs */}
       {data.kurs && data.kurs.length > 0 && (
         <ScrollReveal>
-        <section className="px-6 md:px-[176px]">
+        <section className="px-6 md:px-[62px] lg:px-[70px] xl:px-[70px]">
           <KursAccordion kurs={data.kurs} />
         </section>
         </ScrollReveal>

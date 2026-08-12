@@ -32,9 +32,9 @@ export default async function HomePage() {
 
   return (
     <>
-      <section id="top" className="bg-lys-bla flex flex-col items-center justify-center px-6 pt-[40px] pb-[60px] md:pt-[60px] md:pb-[160px] md:min-h-[762px]">
+      <section id="top" className="bg-lys-bla flex flex-col items-center justify-center px-6 pt-[40px] pb-[60px] md:pt-[50px] md:pb-[120px] md:min-h-[650px]">
         <div className="flex flex-col items-center gap-[24px] md:gap-[41px] w-full max-w-[1095px]">
-          <h1 className="text-bla text-[2rem] md:text-[clamp(2.7rem,6.3vw,5.75rem)] font-semibold leading-[1.25] text-center">
+          <h1 className="text-bla text-[2rem] md:text-[clamp(2.5rem,5.5vw,5rem)] font-semibold leading-[1.25] text-center">
             {data.title}
           </h1>
           {data.ingress && (
@@ -65,7 +65,7 @@ export default async function HomePage() {
 
       {/* Featured projects */}
       {data.featuredProjects && data.featuredProjects.length > 0 && (
-        <section id="prosjekter" className="flex flex-col px-4 md:px-[62px]">
+        <section id="prosjekter" className="flex flex-col px-4 md:px-[62px] lg:px-[70px] xl:px-[70px]">
           {data.featuredProjects.filter((p: { _id: string }, i: number, arr: { _id: string }[]) => arr.findIndex(x => x._id === p._id) === i).map(
             (project: {
               _id: string;
